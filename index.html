@@ -20,6 +20,8 @@
                 transform: translateX(-50%) scale(.6); opacity: 0; pointer-events: none; z-index: 1; cursor: pointer;
                 transition: transform .7s cubic-bezier(.22, .8, .26, 1), opacity .7s ease, filter .7s ease; will-change: transform, opacity, filter; }
             .og-slide img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; -webkit-user-drag: none; }
+            /* JS çalışmasa bile ilk fotoğraf görünsün (yedek) */
+            .og-slider:not(.og-ready) .og-slide:first-child { transform: translateX(-50%) scale(1); opacity: 1; z-index: 3; pointer-events: auto; }
             .og-slide.is-center { transform: translateX(-50%) scale(1); opacity: 1; filter: none; z-index: 3; pointer-events: auto; cursor: zoom-in; }
             .og-slide.is-left  { transform: translateX(calc(-50% - var(--shift))) rotateY(10deg) scale(.8);  opacity: 1; filter: brightness(.5); z-index: 2; pointer-events: auto; }
             .og-slide.is-right { transform: translateX(calc(-50% + var(--shift))) rotateY(-10deg) scale(.8); opacity: 1; filter: brightness(.5); z-index: 2; pointer-events: auto; }
@@ -113,6 +115,7 @@
                 var cur = 0;
                 var lastSwipe = 0;
                 var dots = [];
+                root.classList.add('og-ready');
 
                 // Nokta göstergeleri
                 slides.forEach(function (s, i) {
@@ -172,4 +175,39 @@
                     var dy = e.changedTouches[0].clientY - y0;
                     if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
                         lastSwipe = Date.now();
-                        go(cur + (dx
+                        go(cur + (dx < 0 ? 1 : -1));
+                    }
+                }, { passive: true });
+
+                // Büyük görünüm
+                function openLightbox(i) {
+                    var img = slides[i].querySelector('img');
+                    lbImg.src = img.getAttribute('src');
+                    lbImg.alt = img.getAttribute('alt') || '';
+                    lb.classList.add('is-open');
+                    lb.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                }
+                function closeLightbox() {
+                    lb.classList.remove('is-open');
+                    lb.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = '';
+                }
+                // Fotoğrafın dışındaki karanlık alana (veya X'e) tıklayınca kapan
+                lb.addEventListener('click', function (e) {
+                    if (e.target !== lbImg) closeLightbox();
+                });
+
+                // Klavye: sağ/sol ok ve Esc
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape' && lb.classList.contains('is-open')) { closeLightbox(); return; }
+                    if (lb.classList.contains('is-open')) return;
+                    if (e.key === 'ArrowLeft' && root.contains(document.activeElement)) go(cur - 1);
+                    if (e.key === 'ArrowRight' && root.contains(document.activeElement)) go(cur + 1);
+                });
+
+                render();
+            })();
+        </script>
+    </body>
+</html>
