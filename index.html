@@ -1,72 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
+        <meta name="description" content="Ogen Yapı Teknik" />
         <meta name="author" content="" />
-        <title>Modern Business - Start Bootstrap Template</title>
+        <title>Ogen Yapı Teknik</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            /* ================= ANASAYFA SLIDER ================= */
+            .og-slider { --w: 60%; --shift: 88%; position: relative; max-width: 1500px; margin: 0 auto; overflow: hidden; padding: 16px 0 32px; user-select: none; -webkit-user-select: none; touch-action: pan-y; outline: none; }
+            .og-stage { position: relative; height: clamp(200px, 36vw, 520px); perspective: 1400px; }
+            .og-slide { position: absolute; top: 0; left: 50%; width: var(--w); height: 100%; margin: 0; border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 12px 28px rgba(0, 0, 0, .4);
+                transform: translateX(-50%) scale(.6); opacity: 0; pointer-events: none; z-index: 1; cursor: pointer;
+                transition: transform .7s cubic-bezier(.22, .8, .26, 1), opacity .7s ease, filter .7s ease; will-change: transform, opacity, filter; }
+            .og-slide img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; -webkit-user-drag: none; }
+            .og-slide.is-center { transform: translateX(-50%) scale(1); opacity: 1; filter: none; z-index: 3; pointer-events: auto; cursor: zoom-in; }
+            .og-slide.is-left  { transform: translateX(calc(-50% - var(--shift))) rotateY(10deg) scale(.8);  opacity: 1; filter: brightness(.5); z-index: 2; pointer-events: auto; }
+            .og-slide.is-right { transform: translateX(calc(-50% + var(--shift))) rotateY(-10deg) scale(.8); opacity: 1; filter: brightness(.5); z-index: 2; pointer-events: auto; }
+            .og-slide.is-left:hover, .og-slide.is-right:hover { filter: brightness(.72); }
+            .og-dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
+            .og-dot { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 999px; background: rgba(255, 255, 255, .35); transition: width .35s ease, background .35s ease; cursor: pointer; }
+            .og-dot.is-active { width: 24px; background: #fff; }
+            @media (max-width: 767.98px) {
+                .og-slider { --w: 70%; --shift: 86%; }
+                .og-stage { height: clamp(190px, 60vw, 340px); }
+            }
+
+            /* ================= BÜYÜK GÖRÜNÜM (LIGHTBOX) ================= */
+            .og-lightbox { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(0, 0, 0, .88); opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility .35s ease; cursor: zoom-out; }
+            .og-lightbox.is-open { opacity: 1; visibility: visible; }
+            .og-lightbox img { max-width: 92vw; max-height: 88vh; border-radius: 8px; box-shadow: 0 20px 60px rgba(0, 0, 0, .6); transform: scale(.94); transition: transform .35s ease; cursor: default; background: #fff; }
+            .og-lightbox.is-open img { transform: scale(1); }
+            .og-lb-close { position: absolute; top: 14px; right: 18px; width: 44px; height: 44px; border: 0; background: transparent; color: #fff; font-size: 38px; line-height: 1; cursor: pointer; opacity: .85; }
+            .og-lb-close:hover { opacity: 1; }
+
+            @media (prefers-reduced-motion: reduce) {
+                .og-slide, .og-lightbox, .og-lightbox img, .og-dot { transition: none; }
+            }
+        </style>
     </head>
     <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">
-<a class="navbar-brand" href="index.html">
-    <img src="logo.png" alt="Ogen Yapı Teknik" style="height: 45px; width: auto;">
-</a>
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <a class="navbar-brand" href="index.html"><img src="logo.png" alt="Ogen Yapı Teknik" style="height: 45px; width: auto;"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Menüyü aç/kapat"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                            <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
-                            <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="blog-home.html">Blog Home</a></li>
-                                    <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Portfolio</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                    <li><a class="dropdown-item" href="portfolio-overview.html">Portfolio Overview</a></li>
-                                    <li><a class="dropdown-item" href="portfolio-item.html">Portfolio Item</a></li>
-                                </ul>
-                            </li>
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Anasayfa</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.html">Hakkımızda</a></li>
+                            <li class="nav-item"><a class="nav-link" href="portfolio-overview.html">Referanslar</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">İletişim</a></li>
+                            <li class="nav-item"><a class="nav-link" href="blog-home.html">Blog</a></li>
                         </ul>
                     </div>
                 </div>
             </nav>
-            <!-- Header-->
-            <header class="bg-dark py-5">
+            <!-- Header: Slider-->
+            <header class="bg-dark pt-4 pb-5">
+                <section class="og-slider" id="ogSlider" tabindex="0" aria-roledescription="carousel" aria-label="Fotoğraf galerisi">
+                    <div class="og-stage">
+                        <!-- Fotoğrafları değiştirmek için sadece src="..." kısmını değiştir -->
+                        <figure class="og-slide"><img src="assets/foto-1.svg" alt="Fotoğraf 1" draggable="false" /></figure>
+                        <figure class="og-slide"><img src="assets/foto-2.svg" alt="Fotoğraf 2" draggable="false" /></figure>
+                        <figure class="og-slide"><img src="assets/foto-3.svg" alt="Fotoğraf 3" draggable="false" /></figure>
+                    </div>
+                    <div class="og-dots" role="tablist" aria-label="Fotoğraf seçimi"></div>
+                </section>
                 <div class="container px-5">
-                    <div class="row gx-5 align-items-center justify-content-center">
-                        <div class="col-lg-8 col-xl-7 col-xxl-6">
-                            <div class="my-5 text-center text-xl-start">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 col-xl-7">
+                            <div class="mt-5 text-center">
                                 <h1 class="display-5 fw-bolder text-white mb-2">A Bootstrap 5 template for modern businesses</h1>
                                 <p class="lead fw-normal text-white-50 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!</p>
-                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
-                                    <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
+                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                                    <a class="btn btn-primary btn-lg px-4" href="#features">Get Started</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
                     </div>
                 </div>
             </header>
+
+            <!-- Büyük görünüm (lightbox)-->
+            <div class="og-lightbox" id="ogLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Büyük fotoğraf">
+                <button class="og-lb-close" type="button" aria-label="Kapat">&times;</button>
+                <img src="" alt="" />
+            </div>
             <!-- Features section-->
             <section class="py-5" id="features">
                 <div class="container px-5 my-5">
@@ -233,5 +260,112 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <!-- Slider JS-->
+        <script>
+            (function () {
+                var root = document.getElementById('ogSlider');
+                if (!root) return;
+
+                var slides = [].slice.call(root.querySelectorAll('.og-slide'));
+                var dotsBox = root.querySelector('.og-dots');
+                var lb = document.getElementById('ogLightbox');
+                var lbImg = lb.querySelector('img');
+                var n = slides.length;
+                var cur = 0;
+                var lastSwipe = 0;
+                var dots = [];
+
+                // Nokta göstergeleri
+                slides.forEach(function (s, i) {
+                    var d = document.createElement('button');
+                    d.type = 'button';
+                    d.className = 'og-dot';
+                    d.setAttribute('aria-label', (i + 1) + '. fotoğraf');
+                    d.addEventListener('click', function () { go(i); });
+                    dotsBox.appendChild(d);
+                    dots.push(d);
+                });
+
+                // Bir slaytın ortaya göre konumu: 0 = orta, -1 = sol, 1 = sağ
+                function offset(i) {
+                    var half = Math.floor(n / 2);
+                    return ((i - cur + n + half) % n) - half;
+                }
+
+                function render() {
+                    slides.forEach(function (s, i) {
+                        var o = offset(i);
+                        s.classList.remove('is-center', 'is-left', 'is-right');
+                        if (o === 0) s.classList.add('is-center');
+                        else if (o === -1) s.classList.add('is-left');
+                        else if (o === 1) s.classList.add('is-right');
+                        s.setAttribute('aria-hidden', o === 0 ? 'false' : 'true');
+                    });
+                    dots.forEach(function (d, i) {
+                        d.classList.toggle('is-active', i === cur);
+                    });
+                }
+
+                function go(i) {
+                    cur = ((i % n) + n) % n;
+                    render();
+                }
+
+                // Tıklama: yan fotoğraf -> geçiş, orta fotoğraf -> büyük aç
+                slides.forEach(function (s, i) {
+                    s.addEventListener('click', function () {
+                        if (Date.now() - lastSwipe < 400) return;
+                        var o = offset(i);
+                        if (o === 0) openLightbox(i);
+                        else if (o === -1) go(cur - 1);
+                        else if (o === 1) go(cur + 1);
+                    });
+                });
+
+                // Mobilde parmakla kaydırma
+                var x0 = 0, y0 = 0;
+                root.addEventListener('touchstart', function (e) {
+                    x0 = e.touches[0].clientX;
+                    y0 = e.touches[0].clientY;
+                }, { passive: true });
+                root.addEventListener('touchend', function (e) {
+                    var dx = e.changedTouches[0].clientX - x0;
+                    var dy = e.changedTouches[0].clientY - y0;
+                    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+                        lastSwipe = Date.now();
+                        go(cur + (dx < 0 ? 1 : -1));
+                    }
+                }, { passive: true });
+
+                // Büyük görünüm
+                function openLightbox(i) {
+                    var img = slides[i].querySelector('img');
+                    lbImg.src = img.getAttribute('src');
+                    lbImg.alt = img.getAttribute('alt') || '';
+                    lb.classList.add('is-open');
+                    lb.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                }
+                function closeLightbox() {
+                    lb.classList.remove('is-open');
+                    lb.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = '';
+                }
+                // Fotoğrafın dışındaki karanlık alana (veya X'e) tıklayınca kapan
+                lb.addEventListener('click', function (e) {
+                    if (e.target !== lbImg) closeLightbox();
+                });
+
+                // Klavye: sağ/sol ok ve Esc
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape' && lb.classList.contains('is-open')) { closeLightbox(); return; }
+                    if (lb.classList.contains('is-open')) return;
+                    if (e.key === 'ArrowLeft' && root.contains(document.activeElement)) go(cur - 1);
+                    if (e.key === 'ArrowRight' && root.contains(document.activeElement)) go(cur + 1);
+                });
+
+                render();
+            })();
+        </script>
     </body>
 </html>
