@@ -14,30 +14,28 @@
         <link href="css/styles.css" rel="stylesheet" />
         <style>
             /* ================= ANASAYFA SLIDER ================= */
-            .og-slider { --w: 60%; --shift: 88%; position: relative; max-width: 1500px; margin: 0 auto; overflow: hidden; padding: 16px 0 32px; user-select: none; -webkit-user-select: none; touch-action: pan-y; outline: none; }
-            .og-stage { position: relative; height: clamp(200px, 36vw, 520px); perspective: 1400px; }
-            .og-slide { position: absolute; top: 0; left: 50%; width: var(--w); height: 100%; margin: 0; border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 12px 28px rgba(0, 0, 0, .4);
-                transform: translateX(-50%) scale(.6); opacity: 0; pointer-events: none; z-index: 1; cursor: pointer;
+            .og-slider { position: relative; max-width: 1600px; margin: 0 auto; overflow: hidden; padding: 16px 0 28px; user-select: none; -webkit-user-select: none; touch-action: pan-y; outline: none; }
+            .og-stage { position: relative; height: clamp(220px, 36vw, 520px); perspective: 1400px; }
+            .og-slide { position: absolute; top: 50%; left: 50%; width: 62%; height: 100%; margin: 0; border-radius: 12px; overflow: hidden; background: #2b3035; box-shadow: 0 12px 28px rgba(0, 0, 0, .4);
+                transform: translate(-50%, -50%) rotateY(0deg) scale(.6); opacity: 0; pointer-events: none; z-index: 1; cursor: pointer;
                 transition: transform .7s cubic-bezier(.22, .8, .26, 1), opacity .7s ease, filter .7s ease; will-change: transform, opacity, filter; }
-            .og-slide img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; -webkit-user-drag: none; }
+            .og-slide img { width: 100%; height: 100%; object-fit: contain; display: block; pointer-events: none; -webkit-user-drag: none; }
             /* JS çalışmasa bile ilk fotoğraf görünsün (yedek) */
-            .og-slider:not(.og-ready) .og-slide:first-child { transform: translateX(-50%) scale(1); opacity: 1; z-index: 3; pointer-events: auto; }
-            .og-slide.is-center { transform: translateX(-50%) scale(1); opacity: 1; filter: none; z-index: 3; pointer-events: auto; cursor: zoom-in; }
-            .og-slide.is-left  { transform: translateX(calc(-50% - var(--shift))) rotateY(10deg) scale(.8);  opacity: 1; filter: brightness(.5); z-index: 2; pointer-events: auto; }
-            .og-slide.is-right { transform: translateX(calc(-50% + var(--shift))) rotateY(-10deg) scale(.8); opacity: 1; filter: brightness(.5); z-index: 2; pointer-events: auto; }
-            .og-slide.is-left:hover, .og-slide.is-right:hover { filter: brightness(.72); }
+            .og-slider:not(.og-ready) .og-slide:first-child { transform: translate(-50%, -50%) scale(1); opacity: 1; z-index: 3; pointer-events: auto; }
+            .og-init .og-slide { transition: none !important; }
+            .og-slide.is-center { opacity: 1; filter: none; z-index: 5; pointer-events: auto; cursor: zoom-in; }
+            .og-slide.is-near { opacity: 1; filter: brightness(.5); z-index: 4; pointer-events: auto; }
+            .og-slide.is-far { opacity: 1; filter: brightness(.35); z-index: 3; pointer-events: auto; }
+            .og-slide.is-near:hover, .og-slide.is-far:hover { filter: brightness(.72); }
             .og-dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
             .og-dot { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 999px; background: rgba(255, 255, 255, .35); transition: width .35s ease, background .35s ease; cursor: pointer; }
             .og-dot.is-active { width: 24px; background: #fff; }
-            @media (max-width: 767.98px) {
-                .og-slider { --w: 70%; --shift: 86%; }
-                .og-stage { height: clamp(190px, 60vw, 340px); }
-            }
+            .og-count { margin-top: 14px; text-align: center; color: rgba(255, 255, 255, .7); font-size: .95rem; letter-spacing: .05em; }
 
             /* ================= BÜYÜK GÖRÜNÜM (LIGHTBOX) ================= */
             .og-lightbox { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(0, 0, 0, .88); opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility .35s ease; cursor: zoom-out; }
             .og-lightbox.is-open { opacity: 1; visibility: visible; }
-            .og-lightbox img { max-width: 92vw; max-height: 88vh; border-radius: 8px; box-shadow: 0 20px 60px rgba(0, 0, 0, .6); transform: scale(.94); transition: transform .35s ease; cursor: default; background: #fff; }
+            .og-lightbox img { max-width: 94vw; max-height: 90vh; border-radius: 8px; box-shadow: 0 20px 60px rgba(0, 0, 0, .6); transform: scale(.94); transition: transform .35s ease; cursor: default; }
             .og-lightbox.is-open img { transform: scale(1); }
             .og-lb-close { position: absolute; top: 14px; right: 18px; width: 44px; height: 44px; border: 0; background: transparent; color: #fff; font-size: 38px; line-height: 1; cursor: pointer; opacity: .85; }
             .og-lb-close:hover { opacity: 1; }
@@ -58,9 +56,9 @@
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Anasayfa</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.html">Hakkımızda</a></li>
+                            <li class="nav-item"><a class="nav-link" href="hizmetlerimiz.html">Hizmetlerimiz</a></li>
                             <li class="nav-item"><a class="nav-link" href="portfolio-overview.html">Referanslar</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact.html">İletişim</a></li>
-                            <li class="nav-item"><a class="nav-link" href="blog-home.html">Blog</a></li>
                         </ul>
                     </div>
                 </div>
@@ -68,13 +66,12 @@
             <!-- Header: Slider-->
             <header class="bg-dark pt-4 pb-3">
                 <section class="og-slider" id="ogSlider" tabindex="0" aria-roledescription="carousel" aria-label="Fotoğraf galerisi">
-                    <div class="og-stage">
-                        <!-- Fotoğrafları değiştirmek için sadece src="..." kısmını değiştir -->
-                        <figure class="og-slide"><img src="assets/foto-1.svg" alt="Fotoğraf 1" draggable="false" /></figure>
-                        <figure class="og-slide"><img src="assets/foto-2.svg" alt="Fotoğraf 2" draggable="false" /></figure>
-                        <figure class="og-slide"><img src="assets/foto-3.svg" alt="Fotoğraf 3" draggable="false" /></figure>
+                    <div class="og-stage" id="ogStage">
+                        <!-- İlk fotoğraf (diğerleri aşağıdaki FOTOLAR listesinden otomatik eklenir) -->
+                        <figure class="og-slide"><img src="assets/slider/slider-01.jpg" alt="Proje fotoğrafı 1" draggable="false" /></figure>
                     </div>
-                    <div class="og-dots" role="tablist" aria-label="Fotoğraf seçimi"></div>
+                    <div class="og-dots" id="ogDots" role="tablist" aria-label="Fotoğraf seçimi"></div>
+                    <div class="og-count" id="ogCount" hidden></div>
                 </section>
             </header>
 
@@ -90,9 +87,9 @@
                 <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-3 gap-sm-4 mb-3">
                     <li><a class="link-light text-decoration-none" href="index.html">Anasayfa</a></li>
                     <li><a class="link-light text-decoration-none" href="about.html">Hakkımızda</a></li>
+                    <li><a class="link-light text-decoration-none" href="hizmetlerimiz.html">Hizmetlerimiz</a></li>
                     <li><a class="link-light text-decoration-none" href="portfolio-overview.html">Referanslar</a></li>
                     <li><a class="link-light text-decoration-none" href="contact.html">İletişim</a></li>
-                    <li><a class="link-light text-decoration-none" href="blog-home.html">Blog</a></li>
                 </ul>
                 <div class="small text-center text-white-50">Copyright &copy; Ogen Yapı Teknik</div>
             </div>
@@ -104,63 +101,221 @@
         <!-- Slider JS-->
         <script>
             (function () {
-                var root = document.getElementById('ogSlider');
-                if (!root) return;
+                /* =============================================================
+                   FOTOĞRAF LİSTESİ
+                   Her satır: ['dosya adı', genişlik, yükseklik]
+                   Fotoğraflar assets/slider/ klasöründe durur.
+                   Sırayı değiştirmek veya fotoğraf çıkarmak için satırları taşı/sil.
+                   ============================================================= */
+                var FOTOLAR = [
+                    ['slider-01.jpg', 1195, 896],
+                    ['slider-02.jpg', 853, 543],
+                    ['slider-03.jpg', 720, 960],
+                    ['slider-04.jpg', 1092, 651],
+                    ['slider-05.jpg', 742, 704],
+                    ['slider-06.jpg', 1264, 564],
+                    ['slider-07.jpg', 1600, 666],
+                    ['slider-08.jpg', 889, 991],
+                    ['slider-09.jpg', 1052, 574],
+                    ['slider-10.jpg', 1080, 517],
+                    ['slider-11.jpg', 1284, 723],
+                    ['slider-12.jpg', 1080, 458],
+                    ['slider-13.jpg', 1343, 755],
+                    ['slider-14.jpg', 1111, 852],
+                    ['slider-15.jpg', 1221, 753],
+                    ['slider-16.jpg', 960, 720],
+                    ['slider-17.jpg', 811, 560],
+                    ['slider-18.jpg', 1236, 688],
+                    ['slider-19.jpg', 985, 666],
+                    ['slider-20.jpg', 698, 524],
+                    ['slider-21.jpg', 768, 1024],
+                    ['slider-22.jpg', 957, 718],
+                    ['slider-23.jpg', 1288, 725],
+                    ['slider-24.jpg', 1080, 517],
+                    ['slider-25.jpg', 1004, 650],
+                    ['slider-26.jpg', 785, 449],
+                    ['slider-27.jpg', 1290, 655],
+                    ['slider-28.jpg', 720, 960],
+                    ['slider-29.jpg', 583, 742],
+                    ['slider-30.jpg', 878, 601],
+                    ['slider-31.jpg', 982, 553],
+                    ['slider-32.jpg', 903, 590],
+                    ['slider-33.jpg', 635, 847],
+                    ['slider-34.jpg', 764, 697],
+                    ['slider-35.jpg', 768, 1024],
+                    ['slider-36.jpg', 825, 464],
+                    ['slider-37.jpg', 1124, 632],
+                    ['slider-38.jpg', 992, 662],
+                    ['slider-39.jpg', 1113, 835],
+                    ['slider-40.jpg', 509, 1131],
+                    ['slider-41.jpg', 468, 831],
+                    ['slider-42.jpg', 1046, 818],
+                    ['slider-43.jpg', 858, 811],
+                    ['slider-44.jpg', 720, 960],
+                    ['slider-45.jpg', 516, 918],
+                    ['slider-46.jpg', 1093, 816],
+                    ['slider-47.jpg', 1128, 607],
+                    ['slider-48.jpg', 997, 568],
+                    ['slider-49.jpg', 960, 720],
+                    ['slider-50.jpg', 679, 905],
+                    ['slider-51.jpg', 942, 706],
+                    ['slider-52.jpg', 728, 545],
+                    ['slider-53.jpg', 871, 1161],
+                    ['slider-54.jpg', 1062, 793],
+                    ['slider-55.jpg', 860, 1147],
+                    ['slider-56.jpg', 917, 688],
+                    ['slider-57.jpg', 694, 520],
+                    ['slider-58.jpg', 1200, 896],
+                    ['slider-59.jpg', 639, 856],
+                    ['slider-60.jpg', 1341, 800],
+                    ['slider-61.jpg', 879, 495],
+                    ['slider-62.jpg', 1056, 791],
+                    ['slider-63.jpg', 718, 718],
+                    ['slider-64.jpg', 747, 557],
+                    ['slider-65.jpg', 1600, 1200],
+                    ['slider-66.jpg', 1027, 767],
+                    ['slider-67.jpg', 1105, 829],
+                    ['slider-68.jpg', 906, 677],
+                    ['slider-69.jpg', 973, 727],
+                    ['slider-70.jpg', 1106, 722],
+                    ['slider-71.jpg', 1001, 673],
+                    ['slider-72.jpg', 1108, 831],
+                    ['slider-73.jpg', 1041, 1180],
+                    ['slider-74.jpg', 825, 771],
+                    ['slider-75.jpg', 582, 1037],
+                    ['slider-76.jpg', 808, 604],
+                    ['slider-77.jpg', 1059, 684],
+                    ['slider-78.jpg', 1229, 811]
+                ];
 
-                var slides = [].slice.call(root.querySelectorAll('.og-slide'));
-                var dotsBox = root.querySelector('.og-dots');
+                var root = document.getElementById('ogSlider');
+                var stage = document.getElementById('ogStage');
+                var dotsBox = document.getElementById('ogDots');
+                var countBox = document.getElementById('ogCount');
                 var lb = document.getElementById('ogLightbox');
+                if (!root || !stage || !lb) return;
                 var lbImg = lb.querySelector('img');
+
+                // İlk fotoğraf HTML'de var; kalanları ekle
+                var slides = [], sizes = [], ratios = [];
+                var first = stage.querySelector('.og-slide');
+                FOTOLAR.forEach(function (f, i) {
+                    var fig = i === 0 ? first : document.createElement('figure');
+                    if (i > 0) {
+                        fig.className = 'og-slide';
+                        var im = document.createElement('img');
+                        im.setAttribute('data-src', 'assets/slider/' + f[0]);
+                        im.alt = 'Proje fotoğrafı ' + (i + 1);
+                        im.draggable = false;
+                        fig.appendChild(im);
+                        stage.appendChild(fig);
+                    }
+                    slides.push(fig);
+                    ratios.push(f[1] / f[2]);
+                    sizes.push({ w: 0, h: 0 });
+                });
+
                 var n = slides.length;
                 var cur = 0;
                 var lastSwipe = 0;
                 var dots = [];
-                root.classList.add('og-ready');
 
-                // Nokta göstergeleri
-                slides.forEach(function (s, i) {
-                    var d = document.createElement('button');
-                    d.type = 'button';
-                    d.className = 'og-dot';
-                    d.setAttribute('aria-label', (i + 1) + '. fotoğraf');
-                    d.addEventListener('click', function () { go(i); });
-                    dotsBox.appendChild(d);
-                    dots.push(d);
-                });
+                // Göstergeler: az fotoğrafta noktalar, çoksa "3 / 78" sayacı
+                if (n <= 12) {
+                    slides.forEach(function (s, i) {
+                        var d = document.createElement('button');
+                        d.type = 'button';
+                        d.className = 'og-dot';
+                        d.setAttribute('aria-label', (i + 1) + '. fotoğraf');
+                        d.addEventListener('click', function () { go(i); });
+                        dotsBox.appendChild(d);
+                        dots.push(d);
+                    });
+                } else {
+                    dotsBox.style.display = 'none';
+                    countBox.hidden = false;
+                }
 
                 // Bir slaytın ortaya göre konumu: 0 = orta, -1 = sol, 1 = sağ
                 function offset(i) {
                     var half = Math.floor(n / 2);
                     return ((i - cur + n + half) % n) - half;
                 }
+                function wrap(i) { return ((i % n) + n) % n; }
+
+                // Her fotoğraf kendi oranında, sahneye sığacak boyutta
+                function layout() {
+                    var cw = root.clientWidth;
+                    var h = stage.clientHeight;
+                    var maxW = cw * (cw < 768 ? 0.74 : 0.62);
+                    slides.forEach(function (s, i) {
+                        var w = Math.min(maxW, h * ratios[i]);
+                        var hh = w / ratios[i];
+                        sizes[i] = { w: w, h: hh };
+                        s.style.width = w + 'px';
+                        s.style.height = hh + 'px';
+                    });
+                }
+
+                var SCALE = [1, 0.8, 0.66];
+                var ROT = [0, 10, 14];
+
+                function centerX(o) {
+                    if (o === 0) return 0;
+                    var sign = o > 0 ? 1 : -1, a = Math.abs(o);
+                    var gap = root.clientWidth < 768 ? 12 : 18;
+                    var x = sizes[cur].w / 2;
+                    for (var k = 1; k <= a; k++) {
+                        var sw = sizes[wrap(cur + sign * k)].w * SCALE[k];
+                        x += gap;
+                        if (k === a) return sign * (x + sw / 2);
+                        x += sw;
+                    }
+                    return 0;
+                }
+
+                function load(i) {
+                    var img = slides[i].querySelector('img');
+                    if (!img.getAttribute('src') && img.getAttribute('data-src')) {
+                        img.src = img.getAttribute('data-src');
+                    }
+                }
 
                 function render() {
+                    var cw = root.clientWidth;
                     slides.forEach(function (s, i) {
-                        var o = offset(i);
-                        s.classList.remove('is-center', 'is-left', 'is-right');
-                        if (o === 0) s.classList.add('is-center');
-                        else if (o === -1) s.classList.add('is-left');
-                        else if (o === 1) s.classList.add('is-right');
+                        var o = offset(i), a = Math.abs(o);
+                        s.classList.remove('is-center', 'is-near', 'is-far');
+                        if (a <= 2) {
+                            var sign = o < 0 ? -1 : 1;
+                            s.classList.add(a === 0 ? 'is-center' : (a === 1 ? 'is-near' : 'is-far'));
+                            s.style.transform = 'translate(calc(-50% + ' + centerX(o) + 'px), -50%) rotateY(' + (-sign * ROT[a]) + 'deg) scale(' + SCALE[a] + ')';
+                            s.style.opacity = '';
+                        } else {
+                            var sg = o < 0 ? -1 : 1;
+                            s.style.transform = 'translate(calc(-50% + ' + (sg * (cw / 2 + sizes[i].w)) + 'px), -50%) rotateY(0deg) scale(.6)';
+                            s.style.opacity = '0';
+                        }
                         s.setAttribute('aria-hidden', o === 0 ? 'false' : 'true');
                     });
-                    dots.forEach(function (d, i) {
-                        d.classList.toggle('is-active', i === cur);
-                    });
+                    // Yakındaki fotoğrafları önceden yükle
+                    for (var k = -3; k <= 3; k++) load(wrap(cur + k));
+                    dots.forEach(function (d, i) { d.classList.toggle('is-active', i === cur); });
+                    countBox.textContent = (cur + 1) + ' / ' + n;
                 }
 
                 function go(i) {
-                    cur = ((i % n) + n) % n;
+                    cur = wrap(i);
                     render();
                 }
 
-                // Tıklama: yan fotoğraf -> geçiş, orta fotoğraf -> büyük aç
+                // Tıklama: yan fotoğraf -> o fotoğrafa geç, orta fotoğraf -> büyük aç
                 slides.forEach(function (s, i) {
                     s.addEventListener('click', function () {
                         if (Date.now() - lastSwipe < 400) return;
                         var o = offset(i);
                         if (o === 0) openLightbox(i);
-                        else if (o === -1) go(cur - 1);
-                        else if (o === 1) go(cur + 1);
+                        else if (Math.abs(o) <= 2) go(cur + o);
                     });
                 });
 
@@ -206,7 +361,20 @@
                     if (e.key === 'ArrowRight' && root.contains(document.activeElement)) go(cur + 1);
                 });
 
+                // Ekran boyutu değişince yeniden hesapla
+                var rt;
+                window.addEventListener('resize', function () {
+                    clearTimeout(rt);
+                    rt = setTimeout(function () { layout(); render(); }, 120);
+                });
+
+                // Başlat (ilk açılışta animasyon olmadan yerleş)
+                root.classList.add('og-ready', 'og-init');
+                layout();
                 render();
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () { root.classList.remove('og-init'); });
+                });
             })();
         </script>
     </body>
