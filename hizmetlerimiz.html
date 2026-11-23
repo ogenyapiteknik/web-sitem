@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="OGEN Yapı Teknik hizmet alanları: kaba inşaat, ince inşaat, çelik ve metal işleri, saha düzenleme, izolasyon ve yüzey kaplama.">
+    <title>Hizmetlerimiz | OGEN Yapı Teknik</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        :root {
+            --ogen-red: #D6121C;
+            --ogen-dark: #263246;
+            --ogen-text: #263246;
+            --ogen-muted: #687487;
+            --ogen-border: #e5e8ed;
+            --ogen-bg: #f7f8fa;
+        }
+
+        body {
+            background: #fff;
+            color: var(--ogen-text);
+        }
+
+        .services-section {
+            padding: 4rem 0 5rem;
+        }
+
+        .services-intro {
+            max-width: 780px;
+            margin: 0 auto 2.5rem;
+            text-align: center;
+        }
+
+        .services-eyebrow {
+            display: inline-block;
+            margin-bottom: .65rem;
+            color: var(--ogen-red);
+            font-size: .9rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .services-title {
+            margin: 0 0 .8rem;
+            color: var(--ogen-dark);
+            font-size: clamp(2rem, 3vw, 2.65rem);
+            font-weight: 800;
+        }
+
+        .services-intro-head {
+            margin-bottom: 0;
+        }
+
+        .services-line {
+            width: 100%;
+            height: 4px;
+            border-radius: 4px;
+            background: var(--ogen-red);
+            margin: 0 auto;
+        }
+
+        .services-intro-text {
+            margin-top: 1.6rem;
+        }
+
+        .services-description {
+            margin: 0;
+            color: var(--ogen-muted);
+            font-size: 1.08rem;
+            line-height: 1.7;
+        }
+
+        /* Hizmet kartlarını geniş alana yay ve sütun aralıklarını daralt. */
+        .services-section > .container {
+            max-width: 1400px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: .5rem;
+            align-items: stretch;
+        }
+
+        .service-card {
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid var(--ogen-border);
+            border-radius: 14px;
+            box-shadow: 0 5px 18px rgba(30, 42, 60, .055);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(30, 42, 60, .11);
+        }
+
+        .service-card::before {
+            content: "";
+            display: block;
+            height: 5px;
+            background: var(--ogen-red);
+        }
+
+        .service-card-inner {
+            padding: 1.25rem 1.1rem 1.35rem;
+        }
+
+        .service-card h2 {
+            min-height: 3.2em;
+            margin: 0 0 1rem;
+            color: var(--ogen-dark);
+            font-size: 1.12rem;
+            font-weight: 800;
+            line-height: 1.4;
+        }
+
+        .service-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .service-list li {
+            position: relative;
+            padding: .65rem 0 .65rem 1rem;
+            border-top: 1px solid #edf0f3;
+            color: #465366;
+            font-size: .98rem;
+            line-height: 1.45;
+        }
+
+        .service-list li::before {
+            content: "";
+            position: absolute;
+            top: 1.18rem;
+            left: 0;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--ogen-red);
+        }
+
+        @media (max-width: 1399.98px) {
+            .services-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .services-section {
+                padding: 2.75rem 0 3.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: .8rem;
+            }
+
+            .service-card-inner {
+                padding: 1rem .9rem 1.1rem;
+            }
+
+            .service-card h2 {
+                min-height: 0;
+                font-size: 1.05rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card-inner {
+                padding: 1.15rem 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <main class="flex-shrink-0">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">
+                <a class="navbar-brand" href="index.html">
+                    <img src="logo.png" alt="OGEN Yapı Teknik" style="height:45px;width:auto;">
+                </a>
+            </div>
+        </nav>
+
+        <section class="services-section">
+            <div class="container px-4 px-lg-5">
+
+                <div class="services-intro services-intro-head">
+                    <span class="services-eyebrow">OGEN YAPI TEKNİK</span>
+                    <h1 class="services-title">Hizmetlerimiz</h1>
+                </div>
+
+                <div class="services-line"></div>
+
+                <div class="services-intro services-intro-text">
+                    <p class="services-description">
+                        Yapıların farklı aşamalarında sunduğumuz inşaat ve uygulama hizmetlerini,
+                        uzmanlık alanlarımıza göre bir araya getiriyoruz.
+                    </p>
+                </div>
+
+                <div class="services-grid">
+
+                    <article class="service-card">
+                        <div class="service-card-inner">
+                            <h2>Kaba İnşaat İşleri</h2>
+                            <ul class="service-list">
+                                <li>Betonarme Yapı İmalatları</li>
+                                <li>Duvar Örme İşleri</li>
+                                <li>Yapısal Beton Tamiratı İşleri</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-card-inner">
+                            <h2>İnce İnşaat (Bitirme) İşleri</h2>
+                            <ul class="service-list">
+                                <li>Sıva İşleri</li>
+                                <li>Boya İşleri</li>
+                                <li>Alçıpan Bölme Duvar İşleri</li>
+                                <li>Asma Tavan İşleri</li>
+                                <li>Cam Bölme Sistemleri</li>
+                                <li>Alüminyum Kompozit ve Cam Giydirme Cephe Sistemleri</li>
+                                <li>Seramik ve Fayans Kaplama İşleri</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-card-inner">
+                            <h2>Çelik ve Metal İşleri, Çatı ve Cephe Kaplama</h2>
+                            <ul class="service-list">
+                                <li>Yapısal Çelik İmalat ve Montajı</li>
+                                <li>Çatı Kaplama (Sandviç Panel ve Trapez Sac)</li>
+                                <li>Cephe Kaplama (Sandviç Panel ve Trapez Sac)</li>
+                                <li>Metal Kapı, Merdiven, Korkuluk ve Platform İşleri</li>
+                                <li>Metal Boyama İşleri</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-card-inner">
+                            <h2>Saha ve Çevre Düzenleme İşleri</h2>
+                            <ul class="service-list">
+                                <li>Saha Betonları</li>
+                                <li>Yol ve Saha Çizgi Boyama İşleri</li>
+                                <li>Tel Örgü ve Panel Çit Yapımı</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-card-inner">
+                            <h2>İzolasyon ve Yüzey Kaplama İşleri</h2>
+                            <ul class="service-list">
+                                <li>Bitümlü Membran Su Yalıtımı</li>
+                                <li>Polyurea Esaslı Yüzey Kaplama</li>
+                                <li>Epoksi Esaslı Yüzey Kaplama</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-auto">
+                    <div class="small m-0 text-white text-center">
+                        Copyright © Ogen Yapı Teknik
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+
+</body>
+</html>
