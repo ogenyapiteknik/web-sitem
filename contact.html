@@ -1,167 +1,146 @@
+
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content />
-        <meta name="author" content />
-        <title>Modern Business - Start Bootstrap Template</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body class="d-flex flex-column">
-        <main class="flex-shrink-0">
-            <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container px-5">
-                    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                            <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
-                            <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="blog-home.html">Blog Home</a></li>
-                                    <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Portfolio</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                    <li><a class="dropdown-item" href="portfolio-overview.html">Portfolio Overview</a></li>
-                                    <li><a class="dropdown-item" href="portfolio-item.html">Portfolio Item</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <!-- Page content-->
-            <section class="py-5">
-                <div class="container px-5">
-                    <!-- Contact form-->
-                    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
-                        <div class="text-center mb-5">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
-                            <h1 class="fw-bolder">Get in touch</h1>
-                            <p class="lead fw-normal text-muted mb-0">We'd love to hear from you</p>
-                        </div>
-                        <div class="row gx-5 justify-content-center">
-                            <div class="col-lg-8 col-xl-6">
-                                <!-- * * * * * * * * * * * * * * *-->
-                                <!-- * * SB Forms Contact Form * *-->
-                                <!-- * * * * * * * * * * * * * * *-->
-                                <!-- This form is pre-integrated with SB Forms.-->
-                                <!-- To make this form functional, sign up at-->
-                                <!-- https://startbootstrap.com/solution/contact-forms-->
-                                <!-- to get an API token!-->
-                                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                                    <!-- Name input-->
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                        <label for="name">Full name</label>
-                                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                                    </div>
-                                    <!-- Email address input-->
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                        <label for="email">Email address</label>
-                                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                                    </div>
-                                    <!-- Phone number input-->
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                        <label for="phone">Phone number</label>
-                                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                                    </div>
-                                    <!-- Message input-->
-                                    <div class="form-floating mb-3">
-                                        <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                        <label for="message">Message</label>
-                                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                                    </div>
-                                    <!-- Submit success message-->
-                                    <!---->
-                                    <!-- This is what your users will see when the form-->
-                                    <!-- has successfully submitted-->
-                                    <div class="d-none" id="submitSuccessMessage">
-                                        <div class="text-center mb-3">
-                                            <div class="fw-bolder">Form submission successful!</div>
-                                            To activate this form, sign up at
-                                            <br />
-                                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                        </div>
-                                    </div>
-                                    <!-- Submit error message-->
-                                    <!---->
-                                    <!-- This is what your users will see when there is-->
-                                    <!-- an error submitting the form-->
-                                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                                    <!-- Submit Button-->
-                                    <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
-                                </form>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="OGEN Yapı Teknik iletişim bilgileri ve iletişim formu." />
+    <meta name="author" content="OGEN Yapı Teknik" />
+    <title>İletişim | OGEN Yapı Teknik</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        :root {
+            --ogen-navy: #303b4e;
+            --ogen-red: #D6121C;
+            --ogen-ink: #15243a;
+            --ogen-muted: #68778a;
+            --ogen-line: #e2e7ed;
+            --ogen-soft: #f5f7fa;
+            --ogen-blue: #2463eb;
+            --ogen-amber: #f3a51b;
+        }
+        body { background: #fff; color: var(--ogen-ink); font-family: Arial, Helvetica, sans-serif; }
+        .contact-section { padding: 3.25rem 0 4.5rem; }
+        .contact-grid { display: grid; grid-template-columns: minmax(280px, .78fr) minmax(420px, 1.12fr); gap: 2rem; align-items: stretch; }
+        .contact-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 28px rgba(24, 36, 52, .13); border: 1px solid rgba(25, 40, 60, .05); }
+        .contact-card-heading { min-height: 65px; padding: 1.15rem 1.8rem; display: flex; align-items: center; gap: .7rem; background: var(--ogen-red); color: #fff; font-size: 1.22rem; font-weight: 800; letter-spacing: .025em; }
+        .contact-card-heading::before { content: ""; width: 10px; height: 10px; flex: 0 0 10px; border-radius: 50%; background: var(--ogen-amber); box-shadow: 0 0 10px rgba(243,165,27,.75); }
+        .contact-info-body { padding: 1.9rem 1.85rem 1.5rem; }
+        .contact-info-item { display: grid; grid-template-columns: 48px 1fr; gap: 1rem; align-items: center; padding: 1.2rem 0; border-bottom: 1px solid var(--ogen-line); }
+        .contact-info-item:first-child { padding-top: .55rem; }
+        .contact-info-item:last-of-type { border-bottom: 0; }
+        .contact-icon { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid #dce3eb; border-radius: 13px; background: #f0f3f7; color: var(--ogen-ink); font-size: 1.25rem; }
+        .contact-icon.address { background: #eaf0ff; border-color: #c8d6ff; color: var(--ogen-blue); }
+        .contact-info-label { display: block; margin-bottom: .28rem; color: var(--ogen-muted); font-size: .88rem; letter-spacing: .08em; }
+        .contact-info-value { color: var(--ogen-ink); font-size: 1.05rem; font-weight: 600; line-height: 1.55; overflow-wrap: anywhere; text-decoration: none; }
+        a.contact-info-value:hover { color: var(--ogen-blue); }
+        .contact-socials { display: flex; gap: .65rem; padding-top: 1.15rem; }
+        .contact-social { width: 46px; height: 46px; display: inline-grid; place-items: center; border: 1px solid #dce3eb; border-radius: 12px; background: #f0f3f7; color: var(--ogen-ink); font-size: 1.25rem; text-decoration: none; transition: background .2s ease, color .2s ease, transform .2s ease; }
+        .contact-social:hover { background: var(--ogen-navy); color: #fff; transform: translateY(-2px); }
+        .contact-form-body { padding: 1.9rem 2rem 2rem; }
+        .contact-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+        .contact-field { min-width: 0; }
+        .contact-field.full { grid-column: 1 / -1; }
+        .contact-field label { display: block; margin: 0 0 .55rem; color: var(--ogen-ink); font-size: .98rem; font-weight: 800; letter-spacing: .035em; }
+        .contact-field input, .contact-field textarea { width: 100%; min-height: 54px; padding: .9rem 1.15rem; border: 1px solid #d9e0e8; border-radius: 13px; outline: none; background: #f7f8fa; color: var(--ogen-ink); font: inherit; transition: border-color .2s ease, box-shadow .2s ease, background .2s ease; }
+        .contact-field textarea { min-height: 155px; resize: vertical; }
+        .contact-field input::placeholder, .contact-field textarea::placeholder { color: #9aa7b7; }
+        .contact-field input:focus, .contact-field textarea:focus { border-color: #8ba9ef; background: #fff; box-shadow: 0 0 0 3px rgba(36,99,235,.1); }
+        .contact-submit { margin-top: 1.35rem; min-height: 52px; padding: .85rem 1.7rem; border: 0; border-radius: 12px; background: var(--ogen-navy); color: #fff; font-weight: 800; letter-spacing: .04em; transition: background .2s ease, transform .2s ease; }
+        .contact-submit:hover { background: #202b3d; transform: translateY(-1px); }
+        .contact-form-note { margin: .85rem 0 0; color: var(--ogen-muted); font-size: .86rem; line-height: 1.5; }
+        @media (max-width: 991.98px) { .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; } .contact-section { padding-top: 2.25rem; } }
+        @media (max-width: 575.98px) { .contact-section { padding: 1.5rem 0 3rem; } .contact-card-heading { padding: 1rem 1.2rem; font-size: 1.08rem; } .contact-info-body, .contact-form-body { padding: 1.25rem 1.15rem; } .contact-form-grid { grid-template-columns: 1fr; gap: 1rem; } .contact-field.full { grid-column: auto; } .contact-info-value { font-size: .98rem; } }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <main class="flex-shrink-0">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">
+                <a class="navbar-brand" href="index.html"><img src="logo.png" alt="OGEN Yapı Teknik" style="height:45px;width:auto;"></a>
+            </div>
+        </nav>
+
+        <section class="contact-section">
+            <div class="container px-4 px-lg-5">
+                <div class="contact-grid">
+                    <section class="contact-card" aria-labelledby="contact-info-title">
+                        <h1 class="contact-card-heading" id="contact-info-title">İLETİŞİM BİLGİLERİMİZ</h1>
+                        <div class="contact-info-body">
+                            <div class="contact-info-item">
+                                <span class="contact-icon address"><i class="bi bi-geo-alt" aria-hidden="true"></i></span>
+                                <div><span class="contact-info-label">ADRES</span><div class="contact-info-value">Hatip Mah. Bedia Muhavit Cad. No: 1/151 Çorlu/TEKİRDAĞ</div></div>
+                            </div>
+                            <div class="contact-info-item">
+                                <span class="contact-icon"><i class="bi bi-telephone" aria-hidden="true"></i></span>
+                                <div><span class="contact-info-label">TELEFON</span><a class="contact-info-value" href="tel:+905438604944">+90 543 860 4944</a></div>
+                            </div>
+                            <div class="contact-info-item">
+                                <span class="contact-icon"><i class="bi bi-envelope" aria-hidden="true"></i></span>
+                                <div><span class="contact-info-label">E-POSTA</span><a class="contact-info-value" href="mailto:ogenyapiteknik@gmail.com">ogenyapiteknik@gmail.com</a></div>
+                            </div>
+                            <div class="contact-socials" aria-label="Sosyal medya ve mesajlaşma bağlantıları">
+                                <a class="contact-social" href="https://www.instagram.com/ogenyapiteknik/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+                                <a class="contact-social" href="https://wa.me/905438604944" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ile yazış"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
                             </div>
                         </div>
-                    </div>
-                    <!-- Contact cards-->
-                    <div class="row gx-5 row-cols-2 row-cols-lg-4 py-5">
-                        <div class="col">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-chat-dots"></i></div>
-                            <div class="h5 mb-2">Chat with us</div>
-                            <p class="text-muted mb-0">Chat live with one of our support specialists.</p>
+                    </section>
+
+                    <section class="contact-card" aria-labelledby="contact-form-title">
+                        <h2 class="contact-card-heading" id="contact-form-title">İLETİŞİM FORMU</h2>
+                        <div class="contact-form-body">
+                            <form id="ogenContactForm">
+                                <div class="contact-form-grid">
+                                    <div class="contact-field full">
+                                        <label for="contactName">ADI VE SOYADI</label>
+                                        <input id="contactName" name="name" type="text" autocomplete="name" placeholder="Lütfen Ad ve Soyadınızı giriniz." required>
+                                    </div>
+                                    <div class="contact-field">
+                                        <label for="contactPhone">TELEFON</label>
+                                        <input id="contactPhone" name="phone" type="tel" autocomplete="tel" placeholder="Lütfen Telefon numaranızı giriniz." required>
+                                    </div>
+                                    <div class="contact-field">
+                                        <label for="contactEmail">E-POSTA</label>
+                                        <input id="contactEmail" name="email" type="email" autocomplete="email" placeholder="email@example.com" required>
+                                    </div>
+                                    <div class="contact-field full">
+                                        <label for="contactMessage">MESAJINIZ</label>
+                                        <textarea id="contactMessage" name="message" placeholder="Mesajınızı buraya yazabilirsiniz." required></textarea>
+                                    </div>
+                                </div>
+                                <button class="contact-submit" type="submit">GÖNDER <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i></button>
+                                <p class="contact-form-note">Gönder butonuna bastığınızda e-posta uygulamanız açılır ve mesajınız gönderime hazır hâle gelir.</p>
+                            </form>
                         </div>
-                        <div class="col">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-people"></i></div>
-                            <div class="h5">Ask the community</div>
-                            <p class="text-muted mb-0">Explore our community forums and communicate with other users.</p>
-                        </div>
-                        <div class="col">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-question-circle"></i></div>
-                            <div class="h5">Support center</div>
-                            <p class="text-muted mb-0">Browse FAQ's and support articles to find solutions.</p>
-                        </div>
-                        <div class="col">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-telephone"></i></div>
-                            <div class="h5">Call us</div>
-                            <p class="text-muted mb-0">Call us during normal business hours at (555) 892-9403.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-        <!-- Footer-->
-        <footer class="bg-dark py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Your Website 2023</div></div>
-                    <div class="col-auto">
-                        <a class="link-light small" href="#!">Privacy</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!">Terms</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!">Contact</a>
-                    </div>
+                    </section>
                 </div>
             </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
+        </section>
+    </main>
+
+    <footer class="bg-dark py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; OGEN Yapı Teknik</div></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script>
+        document.getElementById('ogenContactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            if (!this.reportValidity()) return;
+            var name = document.getElementById('contactName').value.trim();
+            var phone = document.getElementById('contactPhone').value.trim();
+            var email = document.getElementById('contactEmail').value.trim();
+            var message = document.getElementById('contactMessage').value.trim();
+            var body = 'Adı ve Soyadı: ' + name + '\nTelefon: ' + phone + '\nE-posta: ' + email + '\n\nMesaj:\n' + message;
+            window.location.href = 'mailto:ogenyapiteknik@gmail.com?subject=' + encodeURIComponent('Web Sitesi İletişim Formu') + '&body=' + encodeURIComponent(body);
+        });
+    </script>
+</body>
 </html>
