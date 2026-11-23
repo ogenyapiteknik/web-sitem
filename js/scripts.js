@@ -1,18 +1,14 @@
 
-/*!
-* Start Bootstrap - Modern Business v5.0.7
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT
-*/
+/* =========================================================
+   OGEN YAPI TEKNİK - ORTAK SİTE AYARLARI
+   ========================================================= */
 
-/* =====================================================================
-   ÜST MENÜ (TÜM SAYFALAR İÇİN TEK YERDEN)
-   ===================================================================== */
+/* ÜST MENÜ */
 (function () {
     var MENU = [
         { label: 'Anasayfa', href: 'index.html', match: ['index.html'] },
         { label: 'Hakkımızda', href: 'about.html', match: ['about.html'] },
-        { label: 'Hizmetlerimiz', href: 'index.html#hizmetlerimiz', match: [] },
+        { label: 'Hizmetlerimiz', href: 'hizmetlerimiz.html', match: ['hizmetlerimiz.html'] },
         { label: 'Referanslar', href: 'portfolio-overview.html', match: ['portfolio-overview.html', 'portfolio-item.html'] },
         { label: 'İletişim', href: 'contact.html', match: ['contact.html'] }
     ];
@@ -26,7 +22,9 @@
 
     var items = MENU.map(function (m) {
         var active = m.match.indexOf(page) !== -1;
-        return '<li class="nav-item"><a class="nav-link' + (active ? ' active' : '') + '"' +
+
+        return '<li class="nav-item"><a class="nav-link' +
+            (active ? ' active' : '') + '"' +
             (active ? ' aria-current="page"' : '') +
             ' href="' + m.href + '">' + m.label + '</a></li>';
     }).join('');
@@ -34,7 +32,7 @@
     nav.innerHTML =
         '<div class="container px-5">' +
             '<a class="navbar-brand" href="index.html">' +
-                '<img src="logo.png" alt="Ogen Yapı Teknik" style="height: 45px; width: auto;">' +
+                '<img src="logo.png" alt="Ogen Yapı Teknik" style="height:45px;width:auto;">' +
             '</a>' +
             '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Menüyü aç/kapat">' +
                 '<span class="navbar-toggler-icon"></span>' +
@@ -46,9 +44,7 @@
 })();
 
 
-/* =====================================================================
-   ALT MENÜ (TÜM SAYFALARDA ÜST MENÜYLE AYNI)
-   ===================================================================== */
+/* ALT MENÜ VE ORTALANMIŞ TELİF YAZISI */
 (function () {
     var footer = document.querySelector('footer');
     if (!footer) return;
@@ -56,7 +52,7 @@
     var links = [
         ['Anasayfa', 'index.html'],
         ['Hakkımızda', 'about.html'],
-        ['Hizmetlerimiz', 'index.html#hizmetlerimiz'],
+        ['Hizmetlerimiz', 'hizmetlerimiz.html'],
         ['Referanslar', 'portfolio-overview.html'],
         ['İletişim', 'contact.html']
     ];
@@ -68,14 +64,14 @@
     menu.className = 'list-unstyled d-flex flex-wrap justify-content-center gap-3 gap-sm-4 mb-3';
 
     menu.innerHTML = links.map(function (item) {
-        return '<li><a class="link-light text-decoration-none" href="' + item[1] + '">' + item[0] + '</a></li>';
+        return '<li><a class="link-light text-decoration-none" href="' +
+            item[1] + '">' + item[0] + '</a></li>';
     }).join('');
 
     if (!oldMenu) {
         container.insertBefore(menu, container.firstChild);
     }
 
-    /* Eski şablondan kalan bağlantıları kaldır. */
     Array.prototype.slice.call(container.querySelectorAll('a')).forEach(function (link) {
         if (link.closest('ul') === menu) return;
 
@@ -97,20 +93,40 @@
     var copyright = container.querySelector('.small');
 
     if (copyright) {
-        copyright.className = 'small text-center text-white-50';
-        copyright.innerHTML = 'Copyright &copy; Ogen Yapı Teknik';
+        copyright.className = 'small text-center text-white-50 og-footer-copy';
+        copyright.textContent = 'Copyright © Ogen Yapı Teknik';
     } else {
-        var copy = document.createElement('div');
-        copy.className = 'small text-center text-white-50';
-        copy.innerHTML = 'Copyright &copy; Ogen Yapı Teknik';
-        container.appendChild(copy);
+        copyright = document.createElement('div');
+        copyright.className = 'small text-center text-white-50 og-footer-copy';
+        copyright.textContent = 'Copyright © Ogen Yapı Teknik';
+        container.appendChild(copyright);
     }
+
+    var footerStyle = document.createElement('style');
+    footerStyle.textContent = `
+        footer .og-footer-copy {
+            display: block !important;
+            width: 100% !important;
+            text-align: center !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        footer .container > .row {
+            justify-content: center !important;
+            text-align: center !important;
+        }
+
+        footer .container > .row > .col-auto {
+            width: 100% !important;
+            text-align: center !important;
+        }
+    `;
+    document.head.appendChild(footerStyle);
 })();
 
 
-/* =====================================================================
-   WHATSAPP BUTONU (TÜM SAYFALARDA SAĞ ALT KÖŞEDE)
-   ===================================================================== */
+/* WHATSAPP BUTONU */
 (function () {
     var WA_NUMBER = '905438604944';
     var WA_MESSAGE = 'Merhaba, web sitenizden ulaşıyorum.';
@@ -145,10 +161,7 @@
 })();
 
 
-/* =====================================================================
-   FRANK RUHL LIBRE - TÜM SİTEDE YAZI TİPİ
-   Mevcut yazı boyutları ve kalınlıkları korunur.
-   ===================================================================== */
+/* FRANK RUHL LIBRE - TÜM SİTE */
 (function () {
     var fontLink = document.createElement('link');
     fontLink.rel = 'stylesheet';
@@ -156,13 +169,11 @@
     document.head.appendChild(fontLink);
 
     var fontStyle = document.createElement('style');
-
     fontStyle.textContent = `
         body,
         body *:not(i):not([class*="bi-"]):not([class*="fa-"]) {
             font-family: 'Frank Ruhl Libre', serif !important;
         }
     `;
-
     document.head.appendChild(fontStyle);
 })();
