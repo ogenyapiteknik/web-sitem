@@ -1,381 +1,147 @@
 <!DOCTYPE html>
 <html lang="tr">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Ogen Yapı Teknik" />
-        <meta name="author" content="" />
-        <title>Ogen Yapı Teknik</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <style>
-            /* ================= ANASAYFA SLIDER ================= */
-            .og-slider { position: relative; max-width: 1600px; margin: 0 auto; overflow: hidden; padding: 16px 0 28px; user-select: none; -webkit-user-select: none; touch-action: pan-y; outline: none; }
-            .og-stage { position: relative; height: clamp(220px, 36vw, 520px); perspective: 1400px; }
-            .og-slide { position: absolute; top: 50%; left: 50%; width: 62%; height: 100%; margin: 0; border-radius: 12px; overflow: hidden; background: #2b3035; box-shadow: 0 12px 28px rgba(0, 0, 0, .4);
-                transform: translate(-50%, -50%) rotateY(0deg) scale(.6); opacity: 0; pointer-events: none; z-index: 1; cursor: pointer;
-                transition: transform .7s cubic-bezier(.22, .8, .26, 1), opacity .7s ease, filter .7s ease; will-change: transform, opacity, filter; }
-            .og-slide img { width: 100%; height: 100%; object-fit: contain; display: block; pointer-events: none; -webkit-user-drag: none; }
-            /* JS çalışmasa bile ilk fotoğraf görünsün (yedek) */
-            .og-slider:not(.og-ready) .og-slide:first-child { transform: translate(-50%, -50%) scale(1); opacity: 1; z-index: 3; pointer-events: auto; }
-            .og-init .og-slide { transition: none !important; }
-            .og-slide.is-center { opacity: 1; filter: none; z-index: 5; pointer-events: auto; cursor: zoom-in; }
-            .og-slide.is-near { opacity: 1; filter: brightness(.5); z-index: 4; pointer-events: auto; }
-            .og-slide.is-far { opacity: 1; filter: brightness(.35); z-index: 3; pointer-events: auto; }
-            .og-slide.is-near:hover, .og-slide.is-far:hover { filter: brightness(.72); }
-            .og-dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
-            .og-dot { width: 9px; height: 9px; padding: 0; border: 0; border-radius: 999px; background: rgba(255, 255, 255, .35); transition: width .35s ease, background .35s ease; cursor: pointer; }
-            .og-dot.is-active { width: 24px; background: #fff; }
-            .og-count { margin-top: 14px; text-align: center; color: rgba(255, 255, 255, .7); font-size: .95rem; letter-spacing: .05em; }
-
-            /* ================= BÜYÜK GÖRÜNÜM (LIGHTBOX) ================= */
-            .og-lightbox { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(0, 0, 0, .88); opacity: 0; visibility: hidden; transition: opacity .35s ease, visibility .35s ease; cursor: zoom-out; }
-            .og-lightbox.is-open { opacity: 1; visibility: visible; }
-            .og-lightbox img { max-width: 94vw; max-height: 90vh; border-radius: 8px; box-shadow: 0 20px 60px rgba(0, 0, 0, .6); transform: scale(.94); transition: transform .35s ease; cursor: default; }
-            .og-lightbox.is-open img { transform: scale(1); }
-            .og-lb-close { position: absolute; top: 14px; right: 18px; width: 44px; height: 44px; border: 0; background: transparent; color: #fff; font-size: 38px; line-height: 1; cursor: pointer; opacity: .85; }
-            .og-lb-close:hover { opacity: 1; }
-
-            @media (prefers-reduced-motion: reduce) {
-                .og-slide, .og-lightbox, .og-lightbox img, .og-dot { transition: none; }
-            }
-        </style>
-    </head>
-    <body class="d-flex flex-column h-100 bg-dark">
-        <main class="flex-shrink-0">
-            <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container px-5">
-                    <a class="navbar-brand" href="index.html"><img src="logo.png" alt="Ogen Yapı Teknik" style="height: 45px; width: auto;"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Menüyü aç/kapat"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Anasayfa</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.html">Hakkımızda</a></li>
-                            <li class="nav-item"><a class="nav-link" href="hizmetlerimiz.html">Hizmetlerimiz</a></li>
-                            <li class="nav-item"><a class="nav-link" href="portfolio-overview.html">Referanslar</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">İletişim</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <!-- Header: Slider-->
-            <header class="bg-dark pt-4 pb-3">
-                <section class="og-slider" id="ogSlider" tabindex="0" aria-roledescription="carousel" aria-label="Fotoğraf galerisi">
-                    <div class="og-stage" id="ogStage">
-                        <!-- İlk fotoğraf (diğerleri aşağıdaki FOTOLAR listesinden otomatik eklenir) -->
-                        <figure class="og-slide"><img src="assets/slider/slider-01.jpg" alt="Proje fotoğrafı 1" draggable="false" /></figure>
-                    </div>
-                    <div class="og-dots" id="ogDots" role="tablist" aria-label="Fotoğraf seçimi"></div>
-                    <div class="og-count" id="ogCount" hidden></div>
-                </section>
-            </header>
-
-            <!-- Büyük görünüm (lightbox)-->
-            <div class="og-lightbox" id="ogLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Büyük fotoğraf">
-                <button class="og-lb-close" type="button" aria-label="Kapat">&times;</button>
-                <img src="" alt="" />
-            </div>
-        </main>
-        <!-- Footer-->
-        <footer class="bg-dark py-4 mt-auto border-top border-secondary">
-            <div class="container px-5">
-                <ul class="list-unstyled d-flex flex-wrap justify-content-center gap-3 gap-sm-4 mb-3">
-                    <li><a class="link-light text-decoration-none" href="index.html">Anasayfa</a></li>
-                    <li><a class="link-light text-decoration-none" href="about.html">Hakkımızda</a></li>
-                    <li><a class="link-light text-decoration-none" href="hizmetlerimiz.html">Hizmetlerimiz</a></li>
-                    <li><a class="link-light text-decoration-none" href="portfolio-overview.html">Referanslar</a></li>
-                    <li><a class="link-light text-decoration-none" href="contact.html">İletişim</a></li>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Ogen Yapı Teknik: kaba ve ince inşaat, çelik ve metal işleri, çatı-cephe, saha düzenleme, izolasyon ve yüzey kaplama. Çorlu / Tekirdağ merkezli, Türkiye geneli hizmet." />
+    <title>Ogen Yapı Teknik</title>
+    <link rel="icon" href="assets/favicon.ico" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        :root { --og-red: #c8102e; --og-bg: #16191c; --og-card: #1f2327; --og-line: rgba(255,255,255,.1); }
+        body { background: var(--og-bg); color: #e9ecef; }
+        .sec { padding: 72px 0; }
+        .sec-title { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 700; color: #fff; }
+        .sec-sub { color: rgba(255,255,255,.65); max-width: 640px; }
+        .eyebrow { color: var(--og-red); font-weight: 700; letter-spacing: .12em; font-size: .8rem; text-transform: uppercase; }
+        .btn-og { background: var(--og-red); border: 0; color: #fff; font-weight: 600; padding: .8rem 1.6rem; border-radius: 6px; }
+        .btn-og:hover { background: #a50d26; color: #fff; }
+        .btn-ghost { border: 1px solid rgba(255,255,255,.5); color: #fff; padding: .8rem 1.6rem; border-radius: 6px; font-weight: 600; }
+        .btn-ghost:hover { background: rgba(255,255,255,.1); color: #fff; }
+        /* Hero */
+        .hero { position: relative; min-height: min(78vh, 640px); display: flex; align-items: center;
+            background: linear-gradient(0deg, rgba(22,25,28,1) 0%, rgba(22,25,28,0) 22%), linear-gradient(90deg, rgba(22,25,28,.94) 0%, rgba(22,25,28,.75) 50%, rgba(22,25,28,.35) 100%), url('assets/slider/slider-07.jpg') center/cover; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; color: #fff; line-height: 1.1; }
+        .hero p { font-size: 1.1rem; color: rgba(255,255,255,.8); max-width: 540px; }
+        /* Güven şeridi */
+        .trust { background: var(--og-card); border-bottom: 1px solid var(--og-line); }
+        .trust-item { padding: 20px 12px; text-align: center; font-size: .92rem; color: rgba(255,255,255,.8); }
+        .trust-item strong { display: block; color: #fff; font-size: 1rem; }
+        /* Hizmet kartları */
+        .svc { background: var(--og-card); border: 1px solid var(--og-line); border-radius: 10px; overflow: hidden; height: 100%; display: flex; flex-direction: column; transition: transform .25s, border-color .25s; text-decoration: none; color: inherit; }
+        .svc:hover { transform: translateY(-4px); border-color: var(--og-red); color: inherit; }
+        .svc img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+        .svc-body { padding: 18px 20px 22px; }
+        .svc h3 { font-size: 1.1rem; color: #fff; margin-bottom: 6px; }
+        .svc p { font-size: .9rem; color: rgba(255,255,255,.65); margin: 0; }
+        .svc .more { display: inline-block; margin-top: 12px; color: var(--og-red); font-weight: 600; font-size: .9rem; }
+        /* Galeri */
+        .gal { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .gal a { position: relative; display: block; overflow: hidden; border-radius: 8px; aspect-ratio: 4/3; }
+        .gal a:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+        .gal img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+        .gal a:hover img { transform: scale(1.05); }
+        /* Süreç */
+        .step { border-left: 3px solid var(--og-red); padding: 4px 0 4px 18px; }
+        .step b { color: var(--og-red); font-size: 1.6rem; }
+        .step h3 { font-size: 1.05rem; color: #fff; margin: 2px 0 4px; }
+        .step p { font-size: .9rem; color: rgba(255,255,255,.65); margin: 0; }
+        /* CTA */
+        .cta { background: linear-gradient(135deg, #8f0b20, var(--og-red)); }
+        .cta a.tel { color: #fff; font-size: 1.5rem; font-weight: 700; text-decoration: none; }
+        /* Mobil sabit eylem çubuğu */
+        .mbar { display: none; }
+        @media (max-width: 767px) {
+            .sec { padding: 48px 0; }
+            .gal { grid-template-columns: repeat(2, 1fr); }
+            .mbar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 1500; background: #0f1113; border-top: 1px solid var(--og-line); }
+            .mbar a { flex: 1; text-align: center; padding: 14px 6px; color: #fff; font-weight: 600; text-decoration: none; font-size: .95rem; }
+            .mbar a.main { background: var(--og-red); }
+            body { padding-bottom: 52px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background:#0f1113;">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="index.html"><img src="logo.png" alt="Ogen Yapı Teknik" style="height:42px;width:auto"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nv" aria-controls="nv" aria-expanded="false" aria-label="Menüyü aç/kapat"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="nv">
+                <ul class="navbar-nav ms-auto align-items-lg-center mb-2 mb-lg-0 gap-lg-1">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Anasayfa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">Hakkımızda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hizmetlerimiz.html">Hizmetlerimiz</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio-overview.html">Referanslar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">İletişim</a></li>
+                    <li class="nav-item ms-lg-3"><a class="btn btn-og btn-sm" href="contact.html">Teklif Al</a></li>
                 </ul>
-                <div class="small text-center text-white-50">Copyright &copy; Ogen Yapı Teknik</div>
             </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- Slider JS-->
-        <script>
-            (function () {
-                /* =============================================================
-                   FOTOĞRAF LİSTESİ
-                   Her satır: ['dosya adı', genişlik, yükseklik]
-                   Fotoğraflar assets/slider/ klasöründe durur.
-                   Sırayı değiştirmek veya fotoğraf çıkarmak için satırları taşı/sil.
-                   ============================================================= */
-                var FOTOLAR = [
-                    ['slider-01.jpg', 1195, 896],
-                    ['slider-02.jpg', 853, 543],
-                    ['slider-03.jpg', 720, 960],
-                    ['slider-04.jpg', 1092, 651],
-                    ['slider-05.jpg', 742, 704],
-                    ['slider-06.jpg', 1264, 564],
-                    ['slider-07.jpg', 1600, 666],
-                    ['slider-08.jpg', 889, 991],
-                    ['slider-09.jpg', 1052, 574],
-                    ['slider-10.jpg', 1080, 517],
-                    ['slider-11.jpg', 1284, 723],
-                    ['slider-12.jpg', 1080, 458],
-                    ['slider-13.jpg', 1343, 755],
-                    ['slider-14.jpg', 1111, 852],
-                    ['slider-15.jpg', 1221, 753],
-                    ['slider-16.jpg', 960, 720],
-                    ['slider-17.jpg', 811, 560],
-                    ['slider-18.jpg', 1236, 688],
-                    ['slider-19.jpg', 985, 666],
-                    ['slider-20.jpg', 698, 524],
-                    ['slider-21.jpg', 768, 1024],
-                    ['slider-22.jpg', 957, 718],
-                    ['slider-23.jpg', 1288, 725],
-                    ['slider-24.jpg', 1080, 517],
-                    ['slider-25.jpg', 1004, 650],
-                    ['slider-26.jpg', 785, 449],
-                    ['slider-27.jpg', 1290, 655],
-                    ['slider-28.jpg', 720, 960],
-                    ['slider-29.jpg', 583, 742],
-                    ['slider-30.jpg', 878, 601],
-                    ['slider-31.jpg', 982, 553],
-                    ['slider-32.jpg', 903, 590],
-                    ['slider-33.jpg', 635, 847],
-                    ['slider-34.jpg', 764, 697],
-                    ['slider-35.jpg', 768, 1024],
-                    ['slider-36.jpg', 825, 464],
-                    ['slider-37.jpg', 1124, 632],
-                    ['slider-38.jpg', 992, 662],
-                    ['slider-39.jpg', 1113, 835],
-                    ['slider-40.jpg', 509, 1131],
-                    ['slider-41.jpg', 468, 831],
-                    ['slider-42.jpg', 1046, 818],
-                    ['slider-43.jpg', 858, 811],
-                    ['slider-44.jpg', 720, 960],
-                    ['slider-45.jpg', 516, 918],
-                    ['slider-46.jpg', 1093, 816],
-                    ['slider-47.jpg', 1128, 607],
-                    ['slider-48.jpg', 997, 568],
-                    ['slider-49.jpg', 960, 720],
-                    ['slider-50.jpg', 679, 905],
-                    ['slider-51.jpg', 942, 706],
-                    ['slider-52.jpg', 728, 545],
-                    ['slider-53.jpg', 871, 1161],
-                    ['slider-54.jpg', 1062, 793],
-                    ['slider-55.jpg', 860, 1147],
-                    ['slider-56.jpg', 917, 688],
-                    ['slider-57.jpg', 694, 520],
-                    ['slider-58.jpg', 1200, 896],
-                    ['slider-59.jpg', 639, 856],
-                    ['slider-60.jpg', 1341, 800],
-                    ['slider-61.jpg', 879, 495],
-                    ['slider-62.jpg', 1056, 791],
-                    ['slider-63.jpg', 718, 718],
-                    ['slider-64.jpg', 747, 557],
-                    ['slider-65.jpg', 1600, 1200],
-                    ['slider-66.jpg', 1027, 767],
-                    ['slider-67.jpg', 1105, 829],
-                    ['slider-68.jpg', 906, 677],
-                    ['slider-69.jpg', 973, 727],
-                    ['slider-70.jpg', 1106, 722],
-                    ['slider-71.jpg', 1001, 673],
-                    ['slider-72.jpg', 1108, 831],
-                    ['slider-73.jpg', 1041, 1180],
-                    ['slider-74.jpg', 825, 771],
-                    ['slider-75.jpg', 582, 1037],
-                    ['slider-76.jpg', 808, 604],
-                    ['slider-77.jpg', 1059, 684],
-                    ['slider-78.jpg', 1229, 811]
-                ];
+        </div>
+    </nav>
 
-                var root = document.getElementById('ogSlider');
-                var stage = document.getElementById('ogStage');
-                var dotsBox = document.getElementById('ogDots');
-                var countBox = document.getElementById('ogCount');
-                var lb = document.getElementById('ogLightbox');
-                if (!root || !stage || !lb) return;
-                var lbImg = lb.querySelector('img');
+    <main>
+        <!-- 1. HERO -->
+        <header class="hero">
+            <div class="container px-4 px-lg-5 py-5">
+                <div class="eyebrow mb-3">Mühendislik &bull; Taahhüt &bull; Uygulama</div>
+                <h1 class="mb-3">Mühendislik birikimi,<br>saha tecrübesiyle buluşuyor.</h1>
+                <p class="mb-0">Endüstriyel tesis ve ticari yapılarda kaba inşaattan çelik konstrüksiyona, çatı-cepheden izolasyona tek elden, süresinde ve bütçesinde teslim.</p>
+            </div>
+        </header>
 
-                // İlk fotoğraf HTML'de var; kalanları ekle
-                var slides = [], sizes = [], ratios = [];
-                var first = stage.querySelector('.og-slide');
-                FOTOLAR.forEach(function (f, i) {
-                    var fig = i === 0 ? first : document.createElement('figure');
-                    if (i > 0) {
-                        fig.className = 'og-slide';
-                        var im = document.createElement('img');
-                        im.setAttribute('data-src', 'assets/slider/' + f[0]);
-                        im.alt = 'Proje fotoğrafı ' + (i + 1);
-                        im.draggable = false;
-                        fig.appendChild(im);
-                        stage.appendChild(fig);
-                    }
-                    slides.push(fig);
-                    ratios.push(f[1] / f[2]);
-                    sizes.push({ w: 0, h: 0 });
-                });
+        <!-- 2. GÜVEN ŞERİDİ -->
+        <section class="trust" aria-label="Öne çıkanlar">
+            <div class="container px-4 px-lg-5">
+                <div class="row row-cols-2 row-cols-lg-4 g-0">
+                    <div class="col trust-item"><strong>Türkiye Geneli</strong>Farklı Ölçekte Projeler</div>
+                    <div class="col trust-item"><strong>Tek Elden Çözüm</strong>Kaba, İnce, Çelik, İzolasyon</div>
+                    <div class="col trust-item"><strong>İş Sağlığı Ve Güvenliği</strong>Her İşin Ayrılmaz Parçası</div>
+                    <div class="col trust-item"><strong>Süre &bull; Bütçe &bull; Teknik Uyum</strong>Kontrollü Proje Yönetimi</div>
+                </div>
+            </div>
+        </section>
 
-                var n = slides.length;
-                var cur = 0;
-                var lastSwipe = 0;
-                var dots = [];
+        <!-- 3. HİZMETLER -->
+        <section class="sec">
+            <div class="container px-4 px-lg-5">
+                <h2 class="sec-title mb-2">Yapının her aşamasında yanınızdayız</h2>
+                <p class="sec-sub mb-5">Beş uzmanlık alanımızdan ihtiyacınıza uygun olanı seçin, ayrıntıları görün.</p>
+                <div class="row g-4">
+                    <div class="col-12 col-sm-6 col-lg-4"><a class="svc" href="hizmetlerimiz.html"><img src="assets/slider/slider-12.jpg" alt="Betonarme yapı imalatı" loading="lazy"><div class="svc-body"><h3>Kaba İnşaat</h3><p>Betonarme imalat, duvar örme, yapısal beton tamiratı.</p><span class="more">Detaylar &rarr;</span></div></a></div>
+                    <div class="col-12 col-sm-6 col-lg-4"><a class="svc" href="hizmetlerimiz.html"><img src="assets/slider/slider-17.jpg" alt="Cam giydirme cephe" loading="lazy"><div class="svc-body"><h3>İnce İnşaat (Bitirme)</h3><p>Sıva, boya, alçıpan, asma tavan, cam bölme, giydirme cephe, seramik.</p><span class="more">Detaylar &rarr;</span></div></a></div>
+                    <div class="col-12 col-sm-6 col-lg-4"><a class="svc" href="hizmetlerimiz.html"><img src="assets/slider/slider-38.jpg" alt="Cephe kaplama" loading="lazy"><div class="svc-body"><h3>Çelik, Metal, Çatı ve Cephe</h3><p>Yapısal çelik, sandviç panel ve trapez sac kaplama, merdiven, korkuluk.</p><span class="more">Detaylar &rarr;</span></div></a></div>
+                    <div class="col-12 col-sm-6 col-lg-6"><a class="svc" href="hizmetlerimiz.html"><img src="assets/slider/slider-72.jpg" alt="Saha betonu" loading="lazy" style="aspect-ratio:21/9"><div class="svc-body"><h3>Saha ve Çevre Düzenleme</h3><p>Saha betonları, yol çizgi boyama, tel örgü ve panel çit.</p><span class="more">Detaylar &rarr;</span></div></a></div>
+                    <div class="col-12 col-lg-6"><a class="svc" href="hizmetlerimiz.html"><img src="assets/slider/slider-58.jpg" alt="Epoksi zemin kaplama" loading="lazy" style="aspect-ratio:21/9"><div class="svc-body"><h3>İzolasyon ve Yüzey Kaplama</h3><p>Bitümlü membran su yalıtımı, polyurea ve epoksi kaplama.</p><span class="more">Detaylar &rarr;</span></div></a></div>
+                </div>
+            </div>
+        </section>
 
-                // Göstergeler: az fotoğrafta noktalar, çoksa "3 / 78" sayacı
-                if (n <= 12) {
-                    slides.forEach(function (s, i) {
-                        var d = document.createElement('button');
-                        d.type = 'button';
-                        d.className = 'og-dot';
-                        d.setAttribute('aria-label', (i + 1) + '. fotoğraf');
-                        d.addEventListener('click', function () { go(i); });
-                        dotsBox.appendChild(d);
-                        dots.push(d);
-                    });
-                } else {
-                    dotsBox.style.display = 'none';
-                    countBox.hidden = false;
-                }
+        <!-- 4. REFERANS GALERİSİ -->
+        <section class="sec" style="background:#101315">
+            <div class="container px-4 px-lg-5">
+                <div class="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-3">
+                    <div>
+                        <div class="eyebrow">Referanslar</div>
+                        <h2 class="sec-title mb-0">Sahadan kareler</h2>
+                    </div>
+                    <a class="btn btn-ghost" href="portfolio-overview.html">Tüm fotoğraflar (78) &rarr;</a>
+                </div>
+                <div class="gal">
+                    <a href="portfolio-overview.html"><img src="assets/slider/slider-04.jpg" alt="Cam giydirme cephe uygulaması" loading="lazy"></a>
+                    <a href="portfolio-overview.html"><img src="assets/slider/slider-32.jpg" alt="Betonarme imalat" loading="lazy"></a>
+                    <a href="portfolio-overview.html"><img src="assets/slider/slider-54.jpg" alt="Sandviç panel kaplama" loading="lazy"></a>
+                    <a href="portfolio-overview.html"><img src="assets/slider/slider-56.jpg" alt="Cam bölme sistemleri" loading="lazy"></a>
+                    <a href="portfolio-overview.html"><img src="assets/slider/slider-16.jpg" alt="Çelik yapı" loading="lazy"></a>
+                </div>
+            </div>
+        </section>
 
-                // Bir slaytın ortaya göre konumu: 0 = orta, -1 = sol, 1 = sağ
-                function offset(i) {
-                    var half = Math.floor(n / 2);
-                    return ((i - cur + n + half) % n) - half;
-                }
-                function wrap(i) { return ((i % n) + n) % n; }
-
-                // Her fotoğraf kendi oranında, sahneye sığacak boyutta
-                function layout() {
-                    var cw = root.clientWidth;
-                    var h = stage.clientHeight;
-                    var maxW = cw * (cw < 768 ? 0.74 : 0.62);
-                    slides.forEach(function (s, i) {
-                        var w = Math.min(maxW, h * ratios[i]);
-                        var hh = w / ratios[i];
-                        sizes[i] = { w: w, h: hh };
-                        s.style.width = w + 'px';
-                        s.style.height = hh + 'px';
-                    });
-                }
-
-                var SCALE = [1, 0.8, 0.66];
-                var ROT = [0, 10, 14];
-
-                function centerX(o) {
-                    if (o === 0) return 0;
-                    var sign = o > 0 ? 1 : -1, a = Math.abs(o);
-                    var gap = root.clientWidth < 768 ? 12 : 18;
-                    var x = sizes[cur].w / 2;
-                    for (var k = 1; k <= a; k++) {
-                        var sw = sizes[wrap(cur + sign * k)].w * SCALE[k];
-                        x += gap;
-                        if (k === a) return sign * (x + sw / 2);
-                        x += sw;
-                    }
-                    return 0;
-                }
-
-                function load(i) {
-                    var img = slides[i].querySelector('img');
-                    if (!img.getAttribute('src') && img.getAttribute('data-src')) {
-                        img.src = img.getAttribute('data-src');
-                    }
-                }
-
-                function render() {
-                    var cw = root.clientWidth;
-                    slides.forEach(function (s, i) {
-                        var o = offset(i), a = Math.abs(o);
-                        s.classList.remove('is-center', 'is-near', 'is-far');
-                        if (a <= 2) {
-                            var sign = o < 0 ? -1 : 1;
-                            s.classList.add(a === 0 ? 'is-center' : (a === 1 ? 'is-near' : 'is-far'));
-                            s.style.transform = 'translate(calc(-50% + ' + centerX(o) + 'px), -50%) rotateY(' + (-sign * ROT[a]) + 'deg) scale(' + SCALE[a] + ')';
-                            s.style.opacity = '';
-                        } else {
-                            var sg = o < 0 ? -1 : 1;
-                            s.style.transform = 'translate(calc(-50% + ' + (sg * (cw / 2 + sizes[i].w)) + 'px), -50%) rotateY(0deg) scale(.6)';
-                            s.style.opacity = '0';
-                        }
-                        s.setAttribute('aria-hidden', o === 0 ? 'false' : 'true');
-                    });
-                    // Yakındaki fotoğrafları önceden yükle
-                    for (var k = -3; k <= 3; k++) load(wrap(cur + k));
-                    dots.forEach(function (d, i) { d.classList.toggle('is-active', i === cur); });
-                    countBox.textContent = (cur + 1) + ' / ' + n;
-                }
-
-                function go(i) {
-                    cur = wrap(i);
-                    render();
-                }
-
-                // Tıklama: yan fotoğraf -> o fotoğrafa geç, orta fotoğraf -> büyük aç
-                slides.forEach(function (s, i) {
-                    s.addEventListener('click', function () {
-                        if (Date.now() - lastSwipe < 400) return;
-                        var o = offset(i);
-                        if (o === 0) openLightbox(i);
-                        else if (Math.abs(o) <= 2) go(cur + o);
-                    });
-                });
-
-                // Mobilde parmakla kaydırma
-                var x0 = 0, y0 = 0;
-                root.addEventListener('touchstart', function (e) {
-                    x0 = e.touches[0].clientX;
-                    y0 = e.touches[0].clientY;
-                }, { passive: true });
-                root.addEventListener('touchend', function (e) {
-                    var dx = e.changedTouches[0].clientX - x0;
-                    var dy = e.changedTouches[0].clientY - y0;
-                    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
-                        lastSwipe = Date.now();
-                        go(cur + (dx < 0 ? 1 : -1));
-                    }
-                }, { passive: true });
-
-                // Büyük görünüm
-                function openLightbox(i) {
-                    var img = slides[i].querySelector('img');
-                    lbImg.src = img.getAttribute('src');
-                    lbImg.alt = img.getAttribute('alt') || '';
-                    lb.classList.add('is-open');
-                    lb.setAttribute('aria-hidden', 'false');
-                    document.body.style.overflow = 'hidden';
-                }
-                function closeLightbox() {
-                    lb.classList.remove('is-open');
-                    lb.setAttribute('aria-hidden', 'true');
-                    document.body.style.overflow = '';
-                }
-                // Fotoğrafın dışındaki karanlık alana (veya X'e) tıklayınca kapan
-                lb.addEventListener('click', function (e) {
-                    if (e.target !== lbImg) closeLightbox();
-                });
-
-                // Klavye: sağ/sol ok ve Esc
-                document.addEventListener('keydown', function (e) {
-                    if (e.key === 'Escape' && lb.classList.contains('is-open')) { closeLightbox(); return; }
-                    if (lb.classList.contains('is-open')) return;
-                    if (e.key === 'ArrowLeft' && root.contains(document.activeElement)) go(cur - 1);
-                    if (e.key === 'ArrowRight' && root.contains(document.activeElement)) go(cur + 1);
-                });
-
-                // Ekran boyutu değişince yeniden hesapla
-                var rt;
-                window.addEventListener('resize', function () {
-                    clearTimeout(rt);
-                    rt = setTimeout(function () { layout(); render(); }, 120);
-                });
-
-                // Başlat (ilk açılışta animasyon olmadan yerleş)
-                root.classList.add('og-ready', 'og-init');
-                layout();
-                render();
-                requestAnimationFrame(function () {
-                    requestAnimationFrame(function () { root.classList.remove('og-init'); });
-                });
-            })();
-        </script>
-    </body>
-</html>
+        <!-- 5. ÇALIŞMA SÜRECİ -->
+        <section class="sec">
+            <div class="container px-4 px-lg-5">
+                <div class="eyebrow">Nasıl çalışıyoruz?</div>
+                <h2 class="sec-title mb-5">Dört adımda anahtar teslim süreç</h2>
+                <div class="row g-4">
+                    <div class="col-12 col-sm-6 col-lg-3"><div class="step"><b>01</b><h3>Keşif ve analiz</h3><p>İhtiyacı ve teknik beklentileri yerinde değerlendiririz.</p></div></div>
+                    <div class="col-12 col-sm-6 col-lg-3"><div class="step"><b>02</b><h3>Çözüm ve teklif</h3><p>Süre, bütçe ve teknik şartlara uygun net bir teklif sunarız.</p></div></div>
+                    <div class="col-12 col-sm-6 col-lg-3"><div class="step"><b>03</b><h3>Uygulama ve kontrol</h3><p>Güçlü saha organizasyonu, denetlenebilir kalite ve İSG.</p></div></div>
