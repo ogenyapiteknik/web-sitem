@@ -1,8 +1,9 @@
+
 /* =========================================================
    OGEN YAPI TEKNİK - ORTAK SİTE AYARLARI
    ========================================================= */
 
-/* ÜST MENÜ */
+/* ÜST MENÜ - TÜM SAYFALARDA AYNI MARKA ALANI */
 (function () {
     var MENU = [
         { label: 'Anasayfa', href: 'index.html', match: ['index.html'] },
@@ -16,42 +17,27 @@
     if (!nav) return;
 
     document.documentElement.lang = 'tr';
+    nav.classList.add('og-nav');
 
     var page = window.location.pathname.split('/').pop() || 'index.html';
-    var existingBrand = nav.querySelector('.navbar-brand');
-    var brand;
 
-    if (existingBrand) {
-        brand = existingBrand.cloneNode(true);
-    } else {
-        brand = document.createElement('a');
-        brand.className = 'navbar-brand og-brand';
-        brand.href = 'index.html';
-
-        var logo = document.createElement('img');
-        logo.className = 'og-logo';
-        logo.src = 'logo.png';
-        logo.alt = 'Ogen Yapı Teknik';
-        brand.appendChild(logo);
-    }
-
-    brand.classList.add('og-brand');
+    /* Bütün sayfalarda aynı marka alanını oluştur. */
+    var brand = document.createElement('a');
+    brand.className = 'navbar-brand og-brand';
     brand.href = 'index.html';
+    brand.setAttribute('aria-label', 'OGEN Yapı Teknik - Anasayfa');
 
-    if (!brand.querySelector('.og-logo')) {
-        var brandLogo = document.createElement('img');
-        brandLogo.className = 'og-logo';
-        brandLogo.src = 'logo.png';
-        brandLogo.alt = 'Ogen Yapı Teknik';
-        brand.insertBefore(brandLogo, brand.firstChild);
-    }
+    var logo = document.createElement('img');
+    logo.className = 'og-logo';
+    logo.src = 'logo.png';
+    logo.alt = 'OGEN Yapı Teknik';
+    logo.decoding = 'async';
+    brand.appendChild(logo);
 
-    if (!brand.querySelector('.og-brand-text')) {
-        var brandText = document.createElement('span');
-        brandText.className = 'og-brand-text';
-        brandText.textContent = 'OGEN Yapı Teknik';
-        brand.appendChild(brandText);
-    }
+    var brandText = document.createElement('span');
+    brandText.className = 'og-brand-text';
+    brandText.textContent = 'OGEN Yapı Teknik';
+    brand.appendChild(brandText);
 
     var items = MENU.map(function (item) {
         var active = item.match.indexOf(page) !== -1;
@@ -90,6 +76,115 @@
     collapse.appendChild(list);
     container.appendChild(collapse);
     nav.appendChild(container);
+
+    /* Logo ve yazı ölçüleri tüm sayfalarda aynı. */
+    var brandStyle = document.getElementById('og-global-brand-style');
+
+    if (!brandStyle) {
+        brandStyle = document.createElement('style');
+        brandStyle.id = 'og-global-brand-style';
+        brandStyle.textContent = `
+            nav.og-nav {
+                padding-top: 16px !important;
+                padding-bottom: 16px !important;
+                overflow: visible !important;
+            }
+
+            nav.og-nav,
+            nav.og-nav > .container,
+            nav.og-nav .og-brand {
+                overflow: visible !important;
+            }
+
+            nav.og-nav > .container {
+                display: flex !important;
+                align-items: center !important;
+            }
+
+            nav.og-nav .og-brand {
+                display: flex !important;
+                align-items: center !important;
+                flex-wrap: nowrap !important;
+                gap: 16px !important;
+                min-height: 0 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                text-decoration: none !important;
+                flex: 0 0 auto !important;
+            }
+
+            nav.og-nav .og-brand .og-logo {
+                display: block !important;
+                width: auto !important;
+                height: 114px !important;
+                max-width: 190px !important;
+                max-height: 114px !important;
+                object-fit: contain !important;
+                flex: 0 0 auto !important;
+                position: relative !important;
+                z-index: 20 !important;
+                margin: -14px 0 -43px !important;
+            }
+
+            nav.og-nav .og-brand .og-brand-text {
+                display: inline-block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                color: #d6121c !important;
+                font-size: 1.6rem !important;
+                font-weight: 800 !important;
+                line-height: 1.1 !important;
+                letter-spacing: .01em !important;
+                white-space: nowrap !important;
+                position: relative !important;
+                z-index: 20 !important;
+                margin: 0 !important;
+                transform: translateY(14px);
+            }
+
+            @media (max-width: 991.98px) {
+                nav.og-nav .og-brand {
+                    gap: 10px !important;
+                }
+
+                nav.og-nav .og-brand .og-logo {
+                    height: 88px !important;
+                    max-height: 88px !important;
+                    max-width: 145px !important;
+                    margin: -8px 0 -23px !important;
+                }
+
+                nav.og-nav .og-brand .og-brand-text {
+                    font-size: 1.1rem !important;
+                    transform: translateY(7px);
+                }
+            }
+
+            @media (max-width: 575.98px) {
+                nav.og-nav {
+                    padding-top: 12px !important;
+                    padding-bottom: 12px !important;
+                }
+
+                nav.og-nav .og-brand {
+                    gap: 8px !important;
+                }
+
+                nav.og-nav .og-brand .og-logo {
+                    height: 72px !important;
+                    max-height: 72px !important;
+                    max-width: 118px !important;
+                    margin: -5px 0 -17px !important;
+                }
+
+                nav.og-nav .og-brand .og-brand-text {
+                    font-size: .95rem !important;
+                    transform: translateY(5px);
+                }
+            }
+        `;
+        document.head.appendChild(brandStyle);
+    }
 })();
 
 
