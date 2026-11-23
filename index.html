@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Ogen Yapı Teknik: kaba ve ince inşaat, çelik ve metal işleri, çatı-cephe, saha düzenleme, izolasyon ve yüzey kaplama." />
+    <title>Ogen Yapı Teknik</title>
+    <link rel="icon" href="assets/favicon.ico" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        :root{--og-red:#c8102e;--og-bg:#16191c;--og-card:#1e2226;--og-line:rgba(255,255,255,.1)}
+        body{background:var(--og-bg);color:#e9ecef;margin:0}
+        .og-nav{background:#0f1113;border-bottom:1px solid var(--og-line)}
+        .og-brand-text{font-weight:800;font-size:1.3rem;letter-spacing:.015em;color:#d6121c;position:relative;top:0;white-space:nowrap;line-height:1.1}
+        .og-logo{height:128px;width:auto;margin:-30px 0 -50px;display:block;position:relative;z-index:6}
+        .og-nav .navbar-brand{gap:18px!important;position:relative;z-index:6}
+        .og-nav .nav-link{color:rgba(255,255,255,.78);font-size:.9rem;padding:.5rem .75rem}
+        .og-nav .nav-link:hover,.og-nav .nav-link.active{color:#fff}
+        .hero{padding:35px 0 34px;background:radial-gradient(circle at 78% 35%,rgba(200,16,46,.08),transparent 55%),var(--og-bg);overflow-x:clip}
+        .hero-copy{position:relative;z-index:3;pointer-events:none}
+        .eyebrow{color:var(--og-red);font-weight:700;letter-spacing:.12em;font-size:.76rem;text-transform:uppercase}
+        .hero h1{font-size:clamp(1.8rem,3.1vw,2.45rem);font-weight:800;color:#fff;line-height:1.12}
+        .hero p{font-size:.82rem;color:rgba(255,255,255,.68);max-width:500px;line-height:1.65}
+        .hero-media-wrap{position:relative;padding-bottom:28px;z-index:4}
+        .hero-frame{position:relative;aspect-ratio:16/10;isolation:isolate;--peek:24%}
+        .hero-slide{position:absolute;inset:0;border-radius:10px;overflow:hidden;border:1px solid var(--og-line);background:#101315;transition:transform .45s ease,opacity .45s ease}
+        .hero-slide img{width:100%;height:100%;object-fit:cover;display:block}
+        .hero-slide.is-current{z-index:2;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+        .hero-slide.is-prev,.hero-slide.is-next{z-index:1;opacity:.4;cursor:pointer;pointer-events:auto}
+        .hero-slide.is-prev{z-index:3;clip-path:inset(0 72% 0 0)}
+        .hero-slide.is-prev:hover,.hero-slide.is-next:hover{opacity:.6}
+        .hero-slide.is-prev{transform:translateX(calc(-7% - var(--peek))) scale(.86)}
+        .hero-slide.is-next{transform:translateX(calc(7% + var(--peek))) scale(.86)}
+        .hero-side-btn{position:absolute;top:0;bottom:0;width:54px;background:transparent;border:0;padding:0;cursor:pointer;z-index:2;display:flex;align-items:center}
+        .hero-side-btn.prev{left:0;justify-content:flex-start;padding-left:14px}
+        .hero-side-btn.next{right:0;justify-content:flex-end;padding-right:14px}
+        .hero-side-btn span{width:38px;height:38px;border-radius:50%;background:rgba(15,17,19,.55);border:1px solid rgba(255,255,255,.22);color:#fff;font-size:1.35rem;line-height:1;display:flex;align-items:center;justify-content:center;opacity:.85;transition:opacity .2s,background .2s,border-color .2s}
+        .hero-side-btn:hover span{opacity:1;background:rgba(15,17,19,.88);border-color:var(--og-red)}
+        .hero-tag{position:absolute;right:14px;bottom:14px;z-index:3;background:rgba(15,17,19,.88);border:1px solid rgba(255,255,255,.14);color:#fff;font-size:.78rem;font-weight:600;padding:6px 12px;border-radius:6px;max-width:90%;pointer-events:none}
+        #heroSliderImg{cursor:zoom-in}
+        .og-lightbox{position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;padding:32px}
+        .og-lightbox.open{display:flex}
+        .og-lightbox img{max-width:94vw;max-height:90vh;object-fit:contain;cursor:zoom-out}
+        .og-lightbox-close{position:absolute;top:16px;right:22px;border:0;background:transparent;color:#fff;font-size:38px;line-height:1;cursor:pointer}
+        .hero-counter{position:absolute;right:0;bottom:0;background:#0f1113;border:1px solid var(--og-line);color:rgba(255,255,255,.75);font-size:.74rem;padding:3px 9px;border-radius:4px}
+        .trust{background:#191d21;border-top:1px solid var(--og-line);border-bottom:1px solid var(--og-line)}
+        .trust-item{padding:14px 10px;text-align:center;font-size:.84rem;color:rgba(255,255,255,.62)}
+        .trust-item strong{display:block;color:#fff;font-size:.95rem;font-weight:700;margin-bottom:2px}
+        .sec{padding:52px 0}
+        .sec-title{font-size:clamp(1.35rem,2.25vw,1.8rem);font-weight:700;color:#fff}
+        .sec-sub{color:rgba(255,255,255,.6);font-size:.78rem;max-width:640px}
+        .svc{background:var(--og-card);border:1px solid var(--og-line);border-radius:10px;overflow:hidden;height:100%;display:flex;flex-direction:column;transition:transform .25s,border-color .25s;text-decoration:none;color:inherit}
+        .svc:hover{transform:translateY(-4px);border-color:var(--og-red);color:inherit}
+        .svc-media{position:relative;overflow:hidden;aspect-ratio:16/10;background:#101315}
+        .svc-media.wide{aspect-ratio:16/8.5}
+        .svc-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+        .svc:hover .svc-media img{transform:scale(1.03)}
+        .svc-badge{position:absolute;right:10px;bottom:10px;background:rgba(15,17,19,.86);color:#fff;font-size:.74rem;font-weight:600;padding:4px 10px;border-radius:5px}
+        .svc-body{padding:12px 13px 13px;display:flex;flex-direction:column;flex:1}
+        .svc h3{font-size:.88rem;font-weight:700;color:#fff;margin-bottom:6px}
+        .svc p{font-size:.72rem;color:rgba(255,255,255,.62);margin:0;line-height:1.5}
+        .svc .more{display:inline-block;margin-top:auto;padding-top:8px;color:var(--og-red);font-weight:600;font-size:.85rem}
+        .gal-sec{background:#121518;border-top:1px solid var(--og-line);border-bottom:1px solid var(--og-line)}
+        .gal{display:grid;grid-template-columns:1.35fr 1fr 1fr;grid-template-rows:repeat(2,160px);gap:7px}
+        .gal-item{position:relative;display:block;overflow:hidden;border-radius:8px;border:1px solid var(--og-line);text-decoration:none}
+        .gal-item.main{grid-row:span 2}
+        .gal-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+        .gal-item:hover img{transform:scale(1.04)}
+        .gal-cap{display:none}
+        .gal-item.main .gal-cap{display:none}
+        .step{border-left:2px solid var(--og-red);padding:2px 0 2px 13px;height:100%}
+        .step b{color:var(--og-red);font-size:.95rem;font-weight:700;display:block;margin-bottom:4px}
+        .step h3{font-size:1rem;font-weight:700;color:#fff;margin:0 0 4px}
+        .step p{font-size:.85rem;color:rgba(255,255,255,.6);margin:0;line-height:1.5}
+        .cta{background:var(--og-red);color:#fff;padding:18px 0}
+        .cta-title{font-size:1.15rem;font-weight:700;margin:0}
+        .cta a.tel{color:#fff;font-size:1.1rem;font-weight:700;text-decoration:none}
+        .og-footer{background:#0e1012;color:rgba(255,255,255,.45);font-size:.68rem;padding:14px 0;text-align:center}
+        .mbar{display:none}
+        @media(min-width:992px){
+            .hero .row{--bs-gutter-x:2.6rem}
+            .trust-item{font-size:.72rem}
+            .trust-item strong{font-size:.78rem}
+            .sec .row{--bs-gutter-y:1rem}
+            .step b{font-size:.9rem}
+            .step h3{font-size:.78rem}
+            .step p{font-size:.68rem}
+        }
+        @media(max-width:991px){
+            .hero-frame{--peek:12%}
+            /* Aynı görünen sol şeridin tamamı mobilde de tıklanabilir kalsın. */
+            .hero-slide.is-prev{clip-path:inset(0 72% 0 0)}
+            .og-brand-text{font-size:1.12rem}
+            .gal{grid-template-columns:1fr 1fr;grid-template-rows:220px repeat(2,160px)}
+            .gal-item.main{grid-column:span 2;grid-row:span 1}
+        }
+        @media(max-width:767px){
+            .sec{padding:48px 0}.hero{padding:36px 0 44px}
+            .og-nav .navbar-brand{gap:10px!important}
+            .og-logo{height:96px;margin:-20px 0 -36px}
+            .og-brand-text{font-size:.95rem}
+            .gal{grid-template-columns:1fr 1fr;grid-template-rows:200px repeat(2,140px)}
+            .hero-side-btn{width:48px}
+            .hero-side-btn span{width:32px;height:32px;font-size:1.15rem}
+            .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:1500;background:#0f1113;border-top:1px solid var(--og-line)}
+            .mbar a{flex:1;text-align:center;padding:13px 6px;color:#fff;font-weight:600;text-decoration:none;font-size:.9rem}
+            .mbar a.main{background:var(--og-red)}
+            body{padding-bottom:48px}
+        }
+
+        /* Marka alanı: logo 2 kat büyük (siyah bandın dışına taşar) + yanında kırmızı marka yazısı. */
+        .og-nav,
+        .og-nav .container,
+        .og-nav .navbar-brand{
+            overflow:visible !important;
+        }
+        .og-nav{
+            padding-top:16px !important;
+            padding-bottom:16px !important;
+        }
+        .og-nav .navbar-brand{
+            display:flex !important;
+            align-items:center !important;
+            flex-wrap:nowrap !important;
+            gap:16px !important;
+            min-height:0 !important;
+            padding-top:0 !important;
+            padding-bottom:0 !important;
+        }
+        .og-nav .navbar-brand .og-logo{
+            display:block !important;
+            height:114px !important;
+            width:auto !important;
+            max-height:none !important;
+            max-width:none !important;
+            flex:0 0 auto !important;
+            object-fit:contain !important;
+            position:relative !important;
+            z-index:20 !important;
+            margin:-14px 0 -43px !important;
+        }
+        .og-nav .navbar-brand .og-brand-text{
+            display:inline-block !important;
+            visibility:visible !important;
+            opacity:1 !important;
+            color:#d6121c !important;
+            font-size:1.6rem !important;
+            font-weight:800 !important;
+            line-height:1.1 !important;
+            letter-spacing:.01em !important;
+            white-space:nowrap !important;
+            position:relative !important;
+            z-index:20 !important;
+            margin:0 !important;
+            transform:translateY(14px);
+        }
+        @media(max-width:767px){
+            .og-nav .navbar-brand{gap:10px !important}
+            .og-nav .navbar-brand .og-logo{
+                height:88px !important;
+                margin:-8px 0 -23px !important;
+            }
+            .og-nav .navbar-brand .og-brand-text{
+                font-size:1.1rem !important;
+                transform:translateY(7px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top og-nav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img class="og-logo" src="logo.png" alt="Ogen Yapı Teknik">
+                <span class="og-brand-text">OGEN Yapı Teknik</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nv" aria-controls="nv" aria-expanded="false" aria-label="Menü">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nv">
+                <ul class="navbar-nav ms-auto align-items-lg-center mb-2 mb-lg-0 gap-lg-2">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Anasayfa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">Hakkımızda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hizmetlerimiz.html">Hizmetlerimiz</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio-overview.html">Referanslar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">İletişim</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <header class="hero">
+            <div class="container px-4 px-lg-5">
+                <div class="row align-items-center g-4 g-lg-5">
+                    <div class="col-12 col-lg-6 hero-copy">
+                        <div class="eyebrow mb-3">MÜHENDİSLİK &bull; TAAHHÜT &bull; UYGULAMA</div>
+                        <h1 class="mb-3">Mühendislik birikimi,<br>saha tecrübesiyle buluşuyor.</h1>
+                        <p class="mb-0">Kaba inşaattan çelik konstrüksiyona, çatı ve cephe kaplamadan izolasyona tek elden, süresinde ve bütçesinde teslim.</p>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="hero-media-wrap">
+                            <div class="hero-frame">
+                                <div class="hero-slide is-prev" id="heroSlidePrev"><img id="heroPrevImg" src="assets/slider/slider-06.jpg" alt=""></div>
+                                <div class="hero-slide is-next" id="heroSlideNext"><img id="heroNextImg" src="assets/slider/slider-08.jpg" alt=""></div>
+                                <div class="hero-slide is-current">
+                                    <img id="heroSliderImg" src="assets/slider/slider-07.jpg" alt="Alüminyum Kompozit ve Cam Giydirme Cephe Sistemleri">
+                                    <button type="button" class="hero-side-btn prev" id="heroPrev" aria-label="Önceki görsel"><span>&lsaquo;</span></button>
+                                    <button type="button" class="hero-side-btn next" id="heroNext" aria-label="Sonraki görsel"><span>&rsaquo;</span></button>
+                                </div>
+                            </div>
+                            <span id="heroSliderCounter" class="hero-counter">1 / 78</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="trust" aria-label="Öne çıkanlar">
+            <div class="container px-4 px-lg-5">
+                <div class="row row-cols-2 row-cols-lg-4 g-0">
+                    <div class="col trust-item"><strong>Türkiye Geneli</strong>Farklı Ölçekte Projeler</div>
+                    <div class="col trust-item"><strong>Tek Elden Çözüm</strong>Tamamlayıcı İşlerin Yapımı</div>
+                    <div class="col trust-item"><strong>İş Sağlığı ve Güvenliği</strong>Her İşin Ayrılmaz Parçası</div>
+                    <div class="col trust-item"><strong>Süre &bull; Bütçe &bull; Teknik Uyum</strong>Kontrollü Proje Yönetimi</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sec">
+            <div class="container px-4 px-lg-5">
+                <h2 class="sec-title mb-1">Projenizin her aşamasında yanınızdayız</h2>
+                <p class="sec-sub mb-4">Uzmanlık alanlarımızdan ihtiyacınıza uygun olanı seçin.</p>
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <a class="svc" href="hizmetlerimiz.html">
+                            <div class="svc-media">
+                                <img src="assets/slider/slider-12.jpg" alt="Betonarme Yapı">
+                            </div>
+                            <div class="svc-body">
+                                <h3>Kaba İnşaat</h3>
+                                <p>Betonarme imalat, duvar örme, yapısal beton tamiratı.</p>
+                                <span class="more">Detaylar &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <a class="svc" href="hizmetlerimiz.html">
+                            <div class="svc-media">
+                                <img src="assets/slider/slider-17.jpg" alt="İnce İnşaat">
+                            </div>
+                            <div class="svc-body">
+                                <h3>İnce İnşaat</h3>
+                                <p>Sıva, boya, alçıpan, cam bölme, giydirme cephe, seramik.</p>
+                                <span class="more">Detaylar &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <a class="svc" href="hizmetlerimiz.html">
+                            <div class="svc-media">
+                                <img src="assets/slider/slider-38.jpg" alt="Çelik, Çatı ve Cephe">
+                            </div>
+                            <div class="svc-body">
+                                <h3>Çelik, Çatı ve Cephe</h3>
+                                <p>Yapısal çelik, sandviç panel, trapez sac, korkuluk.</p>
+                                <span class="more">Detaylar &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <a class="svc" href="hizmetlerimiz.html">
+                            <div class="svc-media wide">
+                                <img src="assets/slider/slider-72.jpg" alt="Saha ve Çevre Düzenleme">
+                            </div>
+                            <div class="svc-body">
+                                <h3>Saha ve Çevre Düzenleme</h3>
+                                <p>Saha betonları, yol çizgi boyama, tel örgü ve panel çit.</p>
+                                <span class="more">Detaylar &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <a class="svc" href="hizmetlerimiz.html">
+                            <div class="svc-media wide">
+                                <img src="assets/slider/slider-58.jpg" alt="İzolasyon ve Yüzey Kaplama">
+                            </div>
+                            <div class="svc-body">
+                                <h3>İzolasyon ve Yüzey Kaplama</h3>
+                                <p>Bitümlü membran, polyurea ve epoksi kaplama.</p>
+                                <span class="more">Detaylar &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sec gal-sec">
+            <div class="container px-4 px-lg-5">
+                <h2 class="sec-title mb-4">Sahadan kareler</h2>
+                <div class="gal">
+                    <a class="gal-item main" href="portfolio-overview.html">
+                        <img src="assets/slider/slider-07.jpg" alt="Alüminyum Kompozit ve Cam Giydirme Cephe Sistemleri">
+                    </a>
+                    <a class="gal-item" href="portfolio-overview.html">
+                        <img src="assets/slider/slider-12.jpg" alt="Betonarme Yapı İmalatı">
+                    </a>
+                    <a class="gal-item" href="portfolio-overview.html">
+                        <img src="assets/slider/slider-38.jpg" alt="Cephe Kaplama (Sandviç Panel)">
+                    </a>
+                    <a class="gal-item" href="portfolio-overview.html">
+                        <img src="assets/slider/slider-17.jpg" alt="Cam Bölme Sistemleri">
+                    </a>
+                    <a class="gal-item" href="portfolio-overview.html">
+                        <img src="assets/slider/slider-58.jpg" alt="Polyurea Esaslı Yüzey Kaplama">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="sec">
+            <div class="container px-4 px-lg-5">
+                <h2 class="sec-title mb-4">Dört adımda anahtar teslim süreç</h2>
+                <div class="row g-4">
+                    <div class="col-6 col-lg-3">
+                        <div class="step">
+                            <b>01</b>
+                            <h3>Keşif ve analiz</h3>
+                            <p>İhtiyacı yerinde değerlendiririz.</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <div class="step">
+                            <b>02</b>
+                            <h3>Çözüm ve teklif</h3>
+                            <p>Süre ve bütçeye uygun net teklif.</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <div class="step">
+                            <b>03</b>
+                            <h3>Uygulama ve kontrol</h3>
+                            <p>Güçlü saha organizasyonu ve İSG.</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <div class="step">
+                            <b>04</b>
+                            <h3>Teslim</h3>
+                            <p>Süresinde, teknik şartlara uygun teslim.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container px-4 px-lg-5 d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <h2 class="cta-title">Projeniz için ücretsiz keşif ve teklif alın</h2>
+                <a class="tel" href="tel:05438604944">0 543 860 49 44</a>
+            </div>
+        </section>
+    </main>
+
+    <div class="og-lightbox" id="ogLightbox" role="dialog" aria-modal="true" aria-label="Büyütülmüş fotoğraf">
+        <button type="button" class="og-lightbox-close" id="ogLightboxClose" aria-label="Kapat">&times;</button>
+        <img id="ogLightboxImg" src="" alt="">
+    </div>
+
+    <footer class="og-footer">
+        Copyright © Ogen Yapı Teknik
+    </footer>
+
+    <div class="mbar">
+        <a href="tel:05438604944">Ara</a>
+        <a class="main" href="contact.html">Teklif Al</a>
+    </div>
+
+    <script src="js/scripts.js"></script>
+    <script>
+        (function () {
+            const image = document.getElementById('heroSliderImg');
+            const counter = document.getElementById('heroSliderCounter');
+            const previous = document.getElementById('heroPrev');
+            const next = document.getElementById('heroNext');
+            const tag = document.getElementById('heroTag');
+            const prevImg = document.getElementById('heroPrevImg');
+            const nextImg = document.getElementById('heroNextImg');
+            const prevSlide = document.getElementById('heroSlidePrev');
+            const nextSlide = document.getElementById('heroSlideNext');
+            if (!image || !previous || !next) return;
+
+            const slides = Array.from({ length: 78 }, (_, index) => {
+                const number = String(index + 1).padStart(2, '0');
+                return {
+                    src: 'assets/slider/slider-' + number + '.jpg',
+                    title: index === 6 ? 'Alüminyum Kompozit ve Cam Giydirme Cephe Sistemleri' : image.alt
+                };
+            });
+            let current = 6;
+
+            function updateSides() {
+                const p = (current - 1 + slides.length) % slides.length;
+                const n = (current + 1) % slides.length;
+                prevImg.src = slides[p].src;
+                nextImg.src = slides[n].src;
+            }
+
+            function showSlide(index) {
+                current = (index + slides.length) % slides.length;
+                image.src = slides[current].src;
+                image.alt = slides[current].title;
+                if (tag) tag.textContent = slides[current].title;
+                counter.textContent = (current + 1) + ' / ' + slides.length;
+                updateSides();
+            }
+
+            const lightbox = document.getElementById('ogLightbox');
+            const lightboxImg = document.getElementById('ogLightboxImg');
+            const closeLightbox = document.getElementById('ogLightboxClose');
+
+            function openLightbox() {
+                lightboxImg.src = image.src;
+                lightboxImg.alt = image.alt;
+                lightbox.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+            function hideLightbox() {
+                lightbox.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            image.addEventListener('click', openLightbox);
+            closeLightbox.addEventListener('click', hideLightbox);
+            lightbox.addEventListener('click', event => {
+                if (event.target === lightbox) hideLightbox();
+            });
+            document.addEventListener('keydown', event => {
+                if (event.key === 'Escape') hideLightbox();
+            });
+
+            previous.addEventListener('click', event => {
+                event.stopPropagation();
+                showSlide(current - 1);
+            });
+            next.addEventListener('click', event => {
+                event.stopPropagation();
+                showSlide(current + 1);
+            });
+            prevSlide.addEventListener('click', () => showSlide(current - 1));
+            nextSlide.addEventListener('click', () => showSlide(current + 1));
+            updateSides();
+        })();
+
+        (function () {
+            const re = /Copyright\s*©\s*Ogen Yapı Teknik/i;
+            function dedupeCopyright() {
+                const nodes = [];
+                const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+                while (walker.nextNode()) {
+                    if (re.test(walker.currentNode.nodeValue) && walker.currentNode.parentElement) {
+                        nodes.push(walker.currentNode.parentElement);
+                    }
+                }
+                for (let i = 1; i < nodes.length; i++) {
+                    const el = nodes[i].closest('footer') || nodes[i];
+                    if (el && el.parentNode) el.remove();
+                }
+            }
+            document.addEventListener('DOMContentLoaded', dedupeCopyright);
+            window.addEventListener('load', () => { dedupeCopyright(); setTimeout(dedupeCopyright, 600); });
+        })();
+    </script>
+</body>
+</html>
