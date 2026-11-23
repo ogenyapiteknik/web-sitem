@@ -15,7 +15,9 @@
         <style>
             .about-title-wrap { text-align: center; }
             .about-eyebrow { display: inline-block; margin-bottom: .65rem; color: #D6121C; font-size: .9rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-            .about-title { font-weight: 800; letter-spacing: .01em; margin-bottom: 14px; }
+            .about-hero-section { padding: 4rem 0 6rem; }
+            @media (max-width: 767.98px) { .about-hero-section { padding: 2.75rem 0 4.5rem; } }
+            .about-title { margin: 0 0 .8rem; color: #263246; font-size: clamp(2rem, 3vw, 2.65rem); font-weight: 800; }
             .about-line { width: 64px; height: 4px; border-radius: 4px; background: #0d6efd; margin: 0 auto; }
             .about-text p { font-size: 1.2rem; line-height: 1.85; color: #343a40; margin-bottom: 1.6rem; text-align: justify; -webkit-hyphens: auto; hyphens: auto; }
             .about-text p.about-lead { font-size: 1.4rem; font-weight: 600; color: #212529; }
@@ -46,13 +48,13 @@
             </nav>
 
             <!-- Hakkımızda-->
-            <section class="py-5">
-                <div class="container px-4 px-lg-5 my-4 my-lg-5">
+            <section class="about-hero-section">
+                <div class="container px-4 px-lg-5">
                     <div class="row justify-content-center">
                         <div class="col-lg-9 col-xl-8">
                             <div class="about-title-wrap mb-5">
                                 <span class="about-eyebrow">OGEN YAPI TEKNİK</span>
-                                <h1 class="about-title display-5">Hakkımızda</h1>
+                                <h1 class="about-title">Hakkımızda</h1>
                                 <div class="about-line"></div>
                             </div>
                             <div class="about-text">
