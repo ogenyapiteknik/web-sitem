@@ -29,10 +29,12 @@
             ' href="' + m.href + '">' + m.label + '</a></li>';
     }).join('');
 
+    
     nav.innerHTML =
         '<div class="container px-5">' +
-            '<a class="navbar-brand" href="index.html">' +
-                '<img src="logo.png" alt="Ogen Yapı Teknik" style="height:45px;width:auto;">' +
+            '<a class="navbar-brand og-brand" href="index.html" style="display:flex;align-items:center;gap:16px;overflow:visible;">' +
+                '<img class="og-logo" src="logo.png" alt="Ogen Yapı Teknik">' +
+                '<span class="og-brand-text">OGEN Yapı Teknik</span>' +
             '</a>' +
             '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Menüyü aç/kapat">' +
                 '<span class="navbar-toggler-icon"></span>' +
