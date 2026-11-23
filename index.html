@@ -26,13 +26,13 @@
         }
         .og-brand-text {
             font-weight: 700;
-            font-size: 1rem;
+            font-size: .95rem;
             letter-spacing: .04em;
             color: #fff;
         }
         .og-nav .nav-link {
             color: rgba(255,255,255,.78);
-            font-size: .92rem;
+            font-size: .9rem;
             padding: .5rem .75rem;
         }
         .og-nav .nav-link:hover,
@@ -40,29 +40,33 @@
             color: #fff;
         }
 
-        /* Hero */
+        /* Hero + Slider */
         .hero {
             padding: 56px 0 64px;
-            background: radial-gradient(circle at 80% 35%, rgba(200,16,46,.08), transparent 55%), var(--og-bg);
+            background: radial-gradient(circle at 78% 35%, rgba(200,16,46,.08), transparent 55%), var(--og-bg);
         }
         .eyebrow {
             color: var(--og-red);
             font-weight: 700;
             letter-spacing: .12em;
-            font-size: .78rem;
+            font-size: .76rem;
             text-transform: uppercase;
         }
         .hero h1 {
-            font-size: clamp(2.1rem, 4.3vw, 3.25rem);
+            font-size: clamp(2.1rem, 4.3vw, 3.2rem);
             font-weight: 800;
             color: #fff;
             line-height: 1.12;
         }
         .hero p {
-            font-size: 1rem;
+            font-size: .98rem;
             color: rgba(255,255,255,.68);
             max-width: 500px;
             line-height: 1.65;
+        }
+        .hero-media-wrap {
+            position: relative;
+            padding-bottom: 26px;
         }
         .hero-frame {
             position: relative;
@@ -78,12 +82,13 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: opacity .25s ease;
         }
         .hero-tag {
             position: absolute;
             right: 14px;
             bottom: 14px;
-            background: rgba(15,17,19,.86);
+            background: rgba(15,17,19,.88);
             backdrop-filter: blur(6px);
             border: 1px solid rgba(255,255,255,.14);
             color: #fff;
@@ -91,21 +96,39 @@
             font-weight: 600;
             padding: 6px 12px;
             border-radius: 6px;
+            max-width: 90%;
+            text-align: right;
         }
-        .hero-counter {
+        .hero-controls {
             position: absolute;
-            right: 14px;
-            bottom: -26px;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .hero-btn {
             background: #0f1113;
             border: 1px solid var(--og-line);
-            color: rgba(255,255,255,.7);
-            font-size: .75rem;
+            color: rgba(255,255,255,.8);
+            font-size: .72rem;
+            line-height: 1;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .hero-btn:hover {
+            border-color: var(--og-red);
+            color: #fff;
+        }
+        .hero-counter {
+            background: #0f1113;
+            border: 1px solid var(--og-line);
+            color: rgba(255,255,255,.75);
+            font-size: .74rem;
             padding: 3px 9px;
             border-radius: 4px;
-        }
-        .hero-media-wrap {
-            position: relative;
-            padding-bottom: 18px;
+            user-select: none;
         }
 
         /* Güven şeridi */
@@ -117,7 +140,7 @@
         .trust-item {
             padding: 20px 12px;
             text-align: center;
-            font-size: .85rem;
+            font-size: .84rem;
             color: rgba(255,255,255,.62);
         }
         .trust-item strong {
@@ -139,7 +162,7 @@
         }
         .sec-sub {
             color: rgba(255,255,255,.6);
-            font-size: .95rem;
+            font-size: .94rem;
             max-width: 640px;
         }
 
@@ -184,7 +207,7 @@
             position: absolute;
             right: 10px;
             bottom: 10px;
-            background: rgba(15,17,19,.84);
+            background: rgba(15,17,19,.86);
             color: #fff;
             font-size: .74rem;
             font-weight: 600;
@@ -256,7 +279,7 @@
             left: 10px;
             right: 10px;
             bottom: 10px;
-            background: rgba(15,17,19,.84);
+            background: rgba(15,17,19,.86);
             color: #fff;
             font-size: .75rem;
             font-weight: 600;
@@ -353,241 +376,3 @@
                 right: 0;
                 bottom: 0;
                 z-index: 1500;
-                background: #0f1113;
-                border-top: 1px solid var(--og-line);
-            }
-            .mbar a {
-                flex: 1;
-                text-align: center;
-                padding: 13px 6px;
-                color: #fff;
-                font-weight: 600;
-                text-decoration: none;
-                font-size: .9rem;
-            }
-            .mbar a.main { background: var(--og-red); }
-            body { padding-bottom: 48px; }
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top og-nav">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-                <img src="logo.png" alt="Ogen Yapı Teknik" style="height:34px;width:auto">
-                <span class="og-brand-text">OGEN Yapı Teknik</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nv" aria-controls="nv" aria-expanded="false" aria-label="Menüyü aç/kapat">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="nv">
-                <ul class="navbar-nav ms-auto align-items-lg-center mb-2 mb-lg-0 gap-lg-2">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Anasayfa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">Hakkımızda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="hizmetlerimiz.html">Hizmetlerimiz</a></li>
-                    <li class="nav-item"><a class="nav-link" href="portfolio-overview.html">Referanslar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">İletişim</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <main>
-        <!-- 1. HERO -->
-        <header class="hero">
-            <div class="container px-4 px-lg-5">
-                <div class="row align-items-center g-4 g-lg-5">
-                    <div class="col-12 col-lg-6">
-                        <div class="eyebrow mb-3">MÜHENDİSLİK &bull; TAAHHÜT &bull; UYGULAMA</div>
-                        <h1 class="mb-3">Mühendislik birikimi,<br>saha tecrübesiyle buluşuyor.</h1>
-                        <p class="mb-0">Kaba inşaattan çelik konstrüksiyona, çatı cepheden izolasyona tek elden, süresinde ve bütçesinde teslim.</p>
-                    </div>
-                    <div class="col-12 col-lg-6">
-                        <div class="hero-media-wrap">
-                            <div class="hero-frame">
-                                <img src="assets/slider/slider-07.jpg" alt="Alüminyum Kompozit ve Cam Giydirme Cephe Sistemleri">
-                                <span class="hero-tag">Alüminyum Kompozit ve Cam Giydirme Cephe Sistemleri</span>
-                            </div>
-                            <span class="hero-counter">1 / 78</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- 2. GÜVEN ŞERİDİ -->
-        <section class="trust" aria-label="Öne çıkanlar">
-            <div class="container px-4 px-lg-5">
-                <div class="row row-cols-2 row-cols-lg-4 g-0">
-                    <div class="col trust-item"><strong>Türkiye Geneli</strong>Farklı Ölçekte Projeler</div>
-                    <div class="col trust-item"><strong>Tek Elden Çözüm</strong>Tamamlayıcı İşlerin Yapımı</div>
-                    <div class="col trust-item"><strong>İş Sağlığı ve Güvenliği</strong>Her İşin Ayrılmaz Parçası</div>
-                    <div class="col trust-item"><strong>Süre &bull; Bütçe &bull; Teknik Uyum</strong>Kontrollü Proje Yönetimi</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. HİZMETLER -->
-        <section class="sec">
-            <div class="container px-4 px-lg-5">
-                <h2 class="sec-title mb-1">Yapının her aşamasında yanınızdayız</h2>
-                <p class="sec-sub mb-4">Uzmanlık alanlarımızdan ihtiyacınıza uygun olanı seçin.</p>
-                <div class="row g-4">
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <a class="svc" href="hizmetlerimiz.html">
-                            <div class="svc-media">
-                                <img src="assets/slider/slider-12.jpg" alt="Betonarme yapı imalatı" loading="lazy">
-                                <span class="svc-badge">Betonarme Yapı</span>
-                            </div>
-                            <div class="svc-body">
-                                <h3>Kaba İnşaat</h3>
-                                <p>Betonarme imalat, duvar örme, yapısal beton tamiratı.</p>
-                                <span class="more">Detaylar &rarr;</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <a class="svc" href="hizmetlerimiz.html">
-                            <div class="svc-media">
-                                <img src="assets/slider/slider-17.jpg" alt="İnce inşaat ve cephe uygulamaları" loading="lazy">
-                            </div>
-                            <div class="svc-body">
-                                <h3>İnce İnşaat</h3>
-                                <p>Sıva, boya, alçıpan, cam bölme, giydirme cephe, seramik.</p>
-                                <span class="more">Detaylar &rarr;</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <a class="svc" href="hizmetlerimiz.html">
-                            <div class="svc-media">
-                                <img src="assets/slider/slider-38.jpg" alt="Çelik, çatı ve cephe kaplama" loading="lazy">
-                                <span class="svc-badge">Çatı Kaplama Sandviç Panel</span>
-                            </div>
-                            <div class="svc-body">
-                                <h3>Çelik, Çatı ve Cephe</h3>
-                                <p>Yapısal çelik, sandviç panel, trapez sac, korkuluk.</p>
-                                <span class="more">Detaylar &rarr;</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-6">
-                        <a class="svc" href="hizmetlerimiz.html">
-                            <div class="svc-media wide">
-                                <img src="assets/slider/slider-72.jpg" alt="Saha betonu ve çevre düzenleme" loading="lazy">
-                            </div>
-                            <div class="svc-body">
-                                <h3>Saha ve Çevre Düzenleme</h3>
-                                <p>Saha betonları, yol çizgi boyama, tel örgü ve panel çit.</p>
-                                <span class="more">Detaylar &rarr;</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-lg-6">
-                        <a class="svc" href="hizmetlerimiz.html">
-                            <div class="svc-media wide">
-                                <img src="assets/slider/slider-58.jpg" alt="İzolasyon ve zemin kaplama" loading="lazy">
-                            </div>
-                            <div class="svc-body">
-                                <h3>İzolasyon ve Yüzey Kaplama</h3>
-                                <p>Bitümlü membran, polyurea ve epoksi kaplama.</p>
-                                <span class="more">Detaylar &rarr;</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. REFERANS GALERİSİ -->
-        <section class="sec gal-sec">
-            <div class="container px-4 px-lg-5">
-                <h2 class="sec-title mb-4">Sahadan kareler</h2>
-                <div class="gal">
-                    <a class="gal-item main" href="portfolio-overview.html">
-                        <img src="assets/slider/slider-04.jpg" alt="Alüminyum Kompozit ve Cam Giydirme Cephe Sistemleri" loading="lazy">
-                        <span class="gal-cap">Alüminyum Kompozit ve Cam Giydirme Cephe Sistemleri</span>
-                    </a>
-                    <a class="gal-item" href="portfolio-overview.html">
-                        <img src="assets/slider/slider-32.jpg" alt="Betonarme Yapı İmalatı" loading="lazy">
-                        <span class="gal-cap">Betonarme Yapı İmalatı</span>
-                    </a>
-                    <a class="gal-item" href="portfolio-overview.html">
-                        <img src="assets/slider/slider-54.jpg" alt="Cephe Kaplama Sandviç Panel" loading="lazy">
-                        <span class="gal-cap">Cephe Kaplama Sandviç Panel</span>
-                    </a>
-                    <a class="gal-item" href="portfolio-overview.html">
-                        <img src="assets/slider/slider-56.jpg" alt="Cam Bölme Sistemleri" loading="lazy">
-                        <span class="gal-cap">Cam Bölme Sistemleri</span>
-                    </a>
-                    <a class="gal-item" href="portfolio-overview.html">
-                        <img src="assets/slider/slider-16.jpg" alt="Polyurea Tank Dikey Kaplama" loading="lazy">
-                        <span class="gal-cap">Polyurea Tank Dikey Kaplama</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. ÇALIŞMA SÜRECİ -->
-        <section class="sec">
-            <div class="container px-4 px-lg-5">
-                <h2 class="sec-title mb-4">Dört adımda anahtar teslim süreç</h2>
-                <div class="row g-4">
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="step">
-                            <b>01</b>
-                            <h3>Keşif ve analiz</h3>
-                            <p>İhtiyacı yerinde değerlendiririz.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="step">
-                            <b>02</b>
-                            <h3>Çözüm ve teklif</h3>
-                            <p>Süre ve bütçeye uygun net teklif.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="step">
-                            <b>03</b>
-                            <h3>Uygulama ve kontrol</h3>
-                            <p>Güçlü saha organizasyonu ve İSG.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="step">
-                            <b>04</b>
-                            <h3>Teslim</h3>
-                            <p>Süresinde, teknik şartlara uygun teslim.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. CTA ŞERİDİ -->
-        <section class="cta" aria-label="Hızlı iletişim">
-            <div class="container px-4 px-lg-5">
-                <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
-                    <p class="cta-title">Projeniz için ücretsiz keşif ve teklif alın</p>
-                    <a class="tel" href="tel:+905438604944">0 543 860 49 44</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="og-footer">
-        <div class="container px-4 px-lg-5">
-            Copyright &copy; Ogen Yapı Teknik
-        </div>
-    </footer>
-
-    <!-- Mobil sabit eylem çubuğu -->
-    <div class="mbar" aria-label="Mobil hızlı işlemler">
-        <a href="tel:+905438604944">Ara</a>
-        <a class="main" href="contact.html">Teklif Al</a>
-    </div>
-
-    <script src="js/scripts.js"></script>
-</body>
-</html>
