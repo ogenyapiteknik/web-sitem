@@ -53,4 +53,142 @@
         @media (max-width: 991.98px) { .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; } .contact-section { padding-top: 2.25rem; } }
         @media (max-width: 575.98px) { .contact-section { padding: 1.5rem 0 3rem; } .contact-card-heading { padding: 1rem 1.2rem; font-size: 1.08rem; } .contact-info-body, .contact-form-body { padding: 1.25rem 1.15rem; } .contact-form-grid { grid-template-columns: 1fr; gap: 1rem; } .contact-field.full { grid-column: auto; } .contact-info-value { font-size: .98rem; } }
 
-        /* Marka alanı: index.html ile aynı görünüm
+        /* Marka alanı: index.html ile aynı görünüm (2 kat büyük logo + kırmızı yazı) */
+        .og-nav,
+        .og-nav .container,
+        .og-nav .navbar-brand{overflow:visible !important}
+        .og-nav .navbar-brand{
+            display:flex !important;
+            align-items:center !important;
+            flex-wrap:nowrap !important;
+            gap:20px !important;
+            min-height:0 !important;
+        }
+        .og-nav .navbar-brand .og-logo{
+            display:block !important;
+            height:224px !important;
+            width:auto !important;
+            max-height:none !important;
+            max-width:none !important;
+            flex:0 0 auto !important;
+            object-fit:contain !important;
+            position:relative !important;
+            z-index:20 !important;
+            margin:-90px 0 -120px !important;
+        }
+        .og-nav .navbar-brand .og-brand-text{
+            display:inline-block !important;
+            visibility:visible !important;
+            opacity:1 !important;
+            color:#c8102e !important;
+            font-size:1.5rem !important;
+            font-weight:800 !important;
+            line-height:1.1 !important;
+            letter-spacing:.02em !important;
+            white-space:nowrap !important;
+            position:relative !important;
+            z-index:20 !important;
+            margin:0 !important;
+        }
+        @media(max-width:767px){
+            .og-nav .navbar-brand{gap:14px !important}
+            .og-nav .navbar-brand .og-logo{
+                height:200px !important;
+                margin:-80px 0 -100px !important;
+            }
+            .og-nav .navbar-brand .og-brand-text{font-size:1.15rem !important}
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <main class="flex-shrink-0">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark og-nav">
+            <div class="container px-5">
+                <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                    <img class="og-logo" src="logo.png" alt="OGEN Yapı Teknik">
+                    <span class="og-brand-text">OGEN Yapı Teknik</span>
+                </a>
+            </div>
+        </nav>
+
+        <section class="contact-section">
+            <div class="container px-4 px-lg-5">
+                <div class="contact-grid">
+                    <section class="contact-card" aria-labelledby="contact-info-title">
+                        <h1 class="contact-card-heading" id="contact-info-title">İLETİŞİM BİLGİLERİMİZ</h1>
+                        <div class="contact-info-body">
+                            <div class="contact-info-item">
+                                <span class="contact-icon address"><i class="bi bi-geo-alt" aria-hidden="true"></i></span>
+                                <div><span class="contact-info-label">ADRES</span><div class="contact-info-value">Hatip Mah. Bedia Muhavit Cad. No: 1/151 Çorlu/TEKİRDAĞ</div></div>
+                            </div>
+                            <div class="contact-info-item">
+                                <span class="contact-icon"><i class="bi bi-telephone" aria-hidden="true"></i></span>
+                                <div><span class="contact-info-label">TELEFON</span><a class="contact-info-value" href="tel:+905438604944">+90 543 860 4944</a></div>
+                            </div>
+                            <div class="contact-info-item">
+                                <span class="contact-icon"><i class="bi bi-envelope" aria-hidden="true"></i></span>
+                                <div><span class="contact-info-label">E-POSTA</span><a class="contact-info-value" href="mailto:ogenyapiteknik@gmail.com">ogenyapiteknik@gmail.com</a></div>
+                            </div>
+                            <div class="contact-socials" aria-label="Sosyal medya ve mesajlaşma bağlantıları">
+                                <a class="contact-social" href="https://www.instagram.com/ogenyapiteknik/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+                                <a class="contact-social" href="https://wa.me/905438604944" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ile yazış"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="contact-card" aria-labelledby="contact-form-title">
+                        <h2 class="contact-card-heading" id="contact-form-title">İLETİŞİM FORMU</h2>
+                        <div class="contact-form-body">
+                            <form id="ogenContactForm">
+                                <div class="contact-form-grid">
+                                    <div class="contact-field full">
+                                        <label for="contactName">ADI VE SOYADI</label>
+                                        <input id="contactName" name="name" type="text" autocomplete="name" placeholder="Lütfen Ad ve Soyadınızı giriniz." required>
+                                    </div>
+                                    <div class="contact-field">
+                                        <label for="contactPhone">TELEFON</label>
+                                        <input id="contactPhone" name="phone" type="tel" autocomplete="tel" placeholder="Lütfen Telefon numaranızı giriniz." required>
+                                    </div>
+                                    <div class="contact-field">
+                                        <label for="contactEmail">E-POSTA</label>
+                                        <input id="contactEmail" name="email" type="email" autocomplete="email" placeholder="email@example.com" required>
+                                    </div>
+                                    <div class="contact-field full">
+                                        <label for="contactMessage">MESAJINIZ</label>
+                                        <textarea id="contactMessage" name="message" placeholder="Mesajınızı buraya yazabilirsiniz." required></textarea>
+                                    </div>
+                                </div>
+                                <button class="contact-submit" type="submit">GÖNDER <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i></button>
+                                <p class="contact-form-note">Gönder butonuna bastığınızda e-posta uygulamanız açılır ve mesajınız gönderime hazır hâle gelir.</p>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; OGEN Yapı Teknik</div></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script>
+        document.getElementById('ogenContactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            if (!this.reportValidity()) return;
+            var name = document.getElementById('contactName').value.trim();
+            var phone = document.getElementById('contactPhone').value.trim();
+            var email = document.getElementById('contactEmail').value.trim();
+            var message = document.getElementById('contactMessage').value.trim();
+            var body = 'Adı ve Soyadı: ' + name + '\nTelefon: ' + phone + '\nE-posta: ' + email + '\n\nMesaj:\n' + message;
+            window.location.href = 'mailto:ogenyapiteknik@gmail.com?subject=' + encodeURIComponent('Web Sitesi İletişim Formu') + '&body=' + encodeURIComponent(body);
+        });
+    </script>
+</body>
+</html>
