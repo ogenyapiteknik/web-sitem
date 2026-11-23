@@ -1,4 +1,3 @@
-
 /* =========================================================
    OGEN YAPI TEKNİK - ORTAK SİTE AYARLARI
    ========================================================= */
@@ -19,34 +18,82 @@
     document.documentElement.lang = 'tr';
 
     var page = window.location.pathname.split('/').pop() || 'index.html';
+    var existingBrand = nav.querySelector('.navbar-brand');
+    var brand;
 
-    var items = MENU.map(function (m) {
-        var active = m.match.indexOf(page) !== -1;
+    if (existingBrand) {
+        brand = existingBrand.cloneNode(true);
+    } else {
+        brand = document.createElement('a');
+        brand.className = 'navbar-brand og-brand';
+        brand.href = 'index.html';
+
+        var logo = document.createElement('img');
+        logo.className = 'og-logo';
+        logo.src = 'logo.png';
+        logo.alt = 'Ogen Yapı Teknik';
+        brand.appendChild(logo);
+    }
+
+    brand.classList.add('og-brand');
+    brand.href = 'index.html';
+
+    if (!brand.querySelector('.og-logo')) {
+        var brandLogo = document.createElement('img');
+        brandLogo.className = 'og-logo';
+        brandLogo.src = 'logo.png';
+        brandLogo.alt = 'Ogen Yapı Teknik';
+        brand.insertBefore(brandLogo, brand.firstChild);
+    }
+
+    if (!brand.querySelector('.og-brand-text')) {
+        var brandText = document.createElement('span');
+        brandText.className = 'og-brand-text';
+        brandText.textContent = 'OGEN Yapı Teknik';
+        brand.appendChild(brandText);
+    }
+
+    var items = MENU.map(function (item) {
+        var active = item.match.indexOf(page) !== -1;
 
         return '<li class="nav-item"><a class="nav-link' +
             (active ? ' active' : '') + '"' +
             (active ? ' aria-current="page"' : '') +
-            ' href="' + m.href + '">' + m.label + '</a></li>';
+            ' href="' + item.href + '">' + item.label + '</a></li>';
     }).join('');
 
-    
-    nav.innerHTML =
-        '<div class="container px-5">' +
-            '<a class="navbar-brand og-brand" href="index.html" style="display:flex;align-items:center;gap:16px;overflow:visible;">' +
-                '<img class="og-logo" src="logo.png" alt="Ogen Yapı Teknik">' +
-                '<span class="og-brand-text">OGEN Yapı Teknik</span>' +
-            '</a>' +
-            '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Menüyü aç/kapat">' +
-                '<span class="navbar-toggler-icon"></span>' +
-            '</button>' +
-            '<div class="collapse navbar-collapse" id="navbarSupportedContent">' +
-                '<ul class="navbar-nav ms-auto mb-2 mb-lg-0">' + items + '</ul>' +
-            '</div>' +
-        '</div>';
+    nav.innerHTML = '';
+
+    var container = document.createElement('div');
+    container.className = 'container px-4 px-lg-5';
+    container.appendChild(brand);
+
+    var toggler = document.createElement('button');
+    toggler.className = 'navbar-toggler';
+    toggler.type = 'button';
+    toggler.setAttribute('data-bs-toggle', 'collapse');
+    toggler.setAttribute('data-bs-target', '#navbarSupportedContent');
+    toggler.setAttribute('aria-controls', 'navbarSupportedContent');
+    toggler.setAttribute('aria-expanded', 'false');
+    toggler.setAttribute('aria-label', 'Menüyü aç/kapat');
+    toggler.innerHTML = '<span class="navbar-toggler-icon"></span>';
+    container.appendChild(toggler);
+
+    var collapse = document.createElement('div');
+    collapse.className = 'collapse navbar-collapse';
+    collapse.id = 'navbarSupportedContent';
+
+    var list = document.createElement('ul');
+    list.className = 'navbar-nav ms-auto mb-2 mb-lg-0';
+    list.innerHTML = items;
+
+    collapse.appendChild(list);
+    container.appendChild(collapse);
+    nav.appendChild(container);
 })();
 
 
-/* ALT MENÜ VE ORTALANMIŞ TELİF YAZISI */
+/* ALT MENÜ VE TELİF YAZISI */
 (function () {
     var footer = document.querySelector('footer');
     if (!footer) return;
@@ -105,6 +152,7 @@
     }
 
     var footerStyle = document.createElement('style');
+
     footerStyle.textContent = `
         footer .og-footer-copy {
             display: block !important;
@@ -124,6 +172,7 @@
             text-align: center !important;
         }
     `;
+
     document.head.appendChild(footerStyle);
 })();
 
@@ -168,14 +217,17 @@
     var fontLink = document.createElement('link');
     fontLink.rel = 'stylesheet';
     fontLink.href = 'https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;600;700;800;900&display=swap';
+
     document.head.appendChild(fontLink);
 
     var fontStyle = document.createElement('style');
+
     fontStyle.textContent = `
         body,
         body *:not(i):not([class*="bi-"]):not([class*="fa-"]) {
             font-family: 'Frank Ruhl Libre', serif !important;
         }
     `;
+
     document.head.appendChild(fontStyle);
 })();
