@@ -118,12 +118,13 @@
             display:flex !important;
             align-items:center !important;
             flex-wrap:nowrap !important;
-            gap:18px !important;
+            gap:20px !important;
             min-height:0 !important;
         }
+        /* Logo: 2 kat büyük (112px -> 224px), siyah bandın dışına taşar */
         .og-nav .navbar-brand .og-logo{
             display:block !important;
-            height:112px !important;
+            height:224px !important;
             width:auto !important;
             max-height:none !important;
             max-width:none !important;
@@ -131,28 +132,30 @@
             object-fit:contain !important;
             position:relative !important;
             z-index:20 !important;
-            margin:-24px 0 -34px !important;
+            margin:-90px 0 -120px !important;
         }
+        /* Logonun sağındaki yazı: logodaki kırmızıyla aynı renk (#c8102e) */
         .og-nav .navbar-brand .og-brand-text{
             display:inline-block !important;
             visibility:visible !important;
             opacity:1 !important;
             color:#c8102e !important;
-            font-size:1.3rem !important;
+            font-size:1.5rem !important;
             font-weight:800 !important;
             line-height:1.1 !important;
+            letter-spacing:.02em !important;
             white-space:nowrap !important;
             position:relative !important;
             z-index:20 !important;
             margin:0 !important;
         }
         @media(max-width:767px){
-            .og-nav .navbar-brand{gap:12px !important}
+            .og-nav .navbar-brand{gap:14px !important}
             .og-nav .navbar-brand .og-logo{
-                height:100px !important;
-                margin:-18px 0 -28px !important;
+                height:200px !important;
+                margin:-80px 0 -100px !important;
             }
-            .og-nav .navbar-brand .og-brand-text{font-size:1.05rem !important}
+            .og-nav .navbar-brand .og-brand-text{font-size:1.15rem !important}
         }
     </style>
 </head>
