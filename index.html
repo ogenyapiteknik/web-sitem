@@ -21,11 +21,13 @@
         .hero-media-wrap{position:relative;padding-bottom:28px}
         .hero-frame{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--og-line);box-shadow:0 20px 50px rgba(0,0,0,.45);aspect-ratio:16/10;background:#101315}
         .hero-frame img{width:100%;height:100%;object-fit:cover;display:block}
-        .hero-tag{position:absolute;right:14px;bottom:14px;background:rgba(15,17,19,.88);border:1px solid rgba(255,255,255,.14);color:#fff;font-size:.78rem;font-weight:600;padding:6px 12px;border-radius:6px;max-width:90%}
-        .hero-controls{position:absolute;right:0;bottom:0;display:flex;align-items:center;gap:6px}
-        .hero-btn{background:#0f1113;border:1px solid var(--og-line);color:rgba(255,255,255,.85);font-size:.75rem;line-height:1;padding:4px 8px;border-radius:4px;cursor:pointer}
-        .hero-btn:hover{border-color:var(--og-red);color:#fff}
-        .hero-counter{background:#0f1113;border:1px solid var(--og-line);color:rgba(255,255,255,.75);font-size:.74rem;padding:3px 9px;border-radius:4px}
+        .hero-side-btn{position:absolute;top:0;bottom:0;width:45%;background:transparent;border:0;padding:0;cursor:pointer;z-index:2;display:flex;align-items:center}
+        .hero-side-btn.prev{left:0;justify-content:flex-start;padding-left:14px}
+        .hero-side-btn.next{right:0;justify-content:flex-end;padding-right:14px}
+        .hero-side-btn span{width:38px;height:38px;border-radius:50%;background:rgba(15,17,19,.55);border:1px solid rgba(255,255,255,.22);color:#fff;font-size:1.35rem;line-height:1;display:flex;align-items:center;justify-content:center;opacity:.85;transition:opacity .2s,background .2s,border-color .2s}
+        .hero-side-btn:hover span{opacity:1;background:rgba(15,17,19,.88);border-color:var(--og-red)}
+        .hero-tag{position:absolute;right:14px;bottom:14px;z-index:3;background:rgba(15,17,19,.88);border:1px solid rgba(255,255,255,.14);color:#fff;font-size:.78rem;font-weight:600;padding:6px 12px;border-radius:6px;max-width:90%;pointer-events:none}
+        .hero-counter{position:absolute;right:0;bottom:0;background:#0f1113;border:1px solid var(--og-line);color:rgba(255,255,255,.75);font-size:.74rem;padding:3px 9px;border-radius:4px}
         .trust{background:#191d21;border-top:1px solid var(--og-line);border-bottom:1px solid var(--og-line)}
         .trust-item{padding:20px 12px;text-align:center;font-size:.84rem;color:rgba(255,255,255,.62)}
         .trust-item strong{display:block;color:#fff;font-size:.95rem;font-weight:700;margin-bottom:2px}
@@ -67,6 +69,8 @@
         @media(max-width:767px){
             .sec{padding:48px 0}.hero{padding:36px 0 44px}
             .gal{grid-template-columns:1fr 1fr;grid-template-rows:200px repeat(2,140px)}
+            .hero-side-btn{width:38%}
+            .hero-side-btn span{width:32px;height:32px;font-size:1.15rem}
             .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:1500;background:#0f1113;border-top:1px solid var(--og-line)}
             .mbar a{flex:1;text-align:center;padding:13px 6px;color:#fff;font-weight:600;text-decoration:none;font-size:.9rem}
             .mbar a.main{background:var(--og-red)}
@@ -109,13 +113,11 @@
                         <div class="hero-media-wrap">
                             <div class="hero-frame">
                                 <img id="heroSliderImg" src="assets/slider/slider-07.jpg" alt="Alüminyum Kompozit ve Cam Giydirme Cephe Sistemleri">
+                                <button type="button" class="hero-side-btn prev" id="heroPrev" aria-label="Önceki görsel"><span>&lsaquo;</span></button>
+                                <button type="button" class="hero-side-btn next" id="heroNext" aria-label="Sonraki görsel"><span>&rsaquo;</span></button>
                                 <span id="heroSliderTag" class="hero-tag">Alüminyum Kompozit ve Cam Giydirme Cephe Sistemleri</span>
                             </div>
-                            <div class="hero-controls">
-                                <button type="button" class="hero-btn" id="heroPrev" aria-label="Önceki">&lsaquo;</button>
-                                <span id="heroSliderCounter" class="hero-counter">1 / 78</span>
-                                <button type="button" class="hero-btn" id="heroNext" aria-label="Sonraki">&rsaquo;</button>
-                            </div>
+                            <span id="heroSliderCounter" class="hero-counter">1 / 78</span>
                         </div>
                     </div>
                 </div>
@@ -141,7 +143,7 @@
                     <div class="col-12 col-md-6 col-lg-4">
                         <a class="svc" href="hizmetlerimiz.html">
                             <div class="svc-media">
-                                <img src="assets/slider/slider-12.jpg" alt="Betonarme Yapı" loading="lazy">
+                                <img src="assets/slider/slider-12.jpg" alt="Betonarme Yapı">
                                 <span class="svc-badge">Betonarme Yapı</span>
                             </div>
                             <div class="svc-body">
@@ -154,3 +156,56 @@
                     <div class="col-12 col-md-6 col-lg-4">
                         <a class="svc" href="hizmetlerimiz.html">
                             <div class="svc-media">
+                                <img src="assets/slider/slider-17.jpg" alt="İnce İnşaat">
+                            </div>
+                            <div class="svc-body">
+                                <h3>İnce İnşaat</h3>
+                                <p>Sıva, boya, alçıpan, cam bölme, giydirme cephe, seramik.</p>
+                                <span class="more">Detaylar &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <a class="svc" href="hizmetlerimiz.html">
+                            <div class="svc-media">
+                                <img src="assets/slider/slider-38.jpg" alt="Çelik, Çatı ve Cephe">
+                                <span class="svc-badge">Çatı Kaplama Sandviç Panel</span>
+                            </div>
+                            <div class="svc-body">
+                                <h3>Çelik, Çatı ve Cephe</h3>
+                                <p>Yapısal çelik, sandviç panel, trapez sac, korkuluk.</p>
+                                <span class="more">Detaylar &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <a class="svc" href="hizmetlerimiz.html">
+                            <div class="svc-media wide">
+                                <img src="assets/slider/slider-72.jpg" alt="Saha ve Çevre Düzenleme">
+                            </div>
+                            <div class="svc-body">
+                                <h3>Saha ve Çevre Düzenleme</h3>
+                                <p>Saha betonları, yol çizgi boyama, tel örgü ve panel çit.</p>
+                                <span class="more">Detaylar &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <a class="svc" href="hizmetlerimiz.html">
+                            <div class="svc-media wide">
+                                <img src="assets/slider/slider-58.jpg" alt="İzolasyon ve Yüzey Kaplama">
+                            </div>
+                            <div class="svc-body">
+                                <h3>İzolasyon ve Yüzey Kaplama</h3>
+                                <p>Bitümlü membran, polyurea ve epoksi kaplama.</p>
+                                <span class="more">Detaylar &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sec gal-sec">
+            <div class="container px-4 px-lg-5">
+                <h2 class="sec-title mb-4">
