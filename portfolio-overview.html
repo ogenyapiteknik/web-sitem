@@ -1,0 +1,1198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                
+                <meta name="description" content="OGEN Yapı Teknik referansları: betonarme ve ince inşaat, çelik işleri, çatı-cephe kaplama, saha düzenleme ve izolasyon projelerinden fotoğraflar." />
+                        <title>Referanslar | OGEN Yapı Teknik</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            :root {
+                --ogen-red: #D6121C;
+                --ogen-dark: #263246;
+            }
+
+            .ref-section {
+                padding: 4rem 0 0;
+            }
+
+            .ref-section > .container {
+                max-width: 1400px;
+            }
+
+            .ref-intro {
+                max-width: 780px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .ref-eyebrow {
+                display: inline-block;
+                margin-bottom: .65rem;
+                color: var(--ogen-red);
+                font-size: .9rem;
+                font-weight: 800;
+                letter-spacing: .12em;
+                text-transform: uppercase;
+            }
+
+            .ref-title {
+                margin: 0 0 .8rem;
+                color: var(--ogen-dark);
+                font-size: clamp(2rem, 3vw, 2.65rem);
+                font-weight: 800;
+            }
+
+            .ref-line {
+                width: 100%;
+                height: 4px;
+                border-radius: 4px;
+                background: var(--ogen-red);
+                margin: 0 auto;
+            }
+
+            @media (max-width: 767.98px) {
+                .ref-section {
+                    padding: 2.75rem 0 0;
+                }
+            }
+
+            .ref-gallery {
+                padding: 2.5rem 0 2.5rem;
+            }
+
+            .ref-gallery > .container {
+                max-width: 1400px;
+            }
+
+            .ref-rows {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: .5rem;
+            }
+
+            .ref-rows + .ref-rows {
+                margin-top: .85rem;
+            }
+
+            .ref-rows[hidden] {
+                display: none;
+            }
+
+            .ref-chip {
+                font: inherit;
+                font-size: .95rem;
+                font-weight: 700;
+                padding: .55rem 1.15rem;
+                border: 1px solid #e5e8ed;
+                border-radius: 999px;
+                background: #fff;
+                color: var(--ogen-dark);
+                cursor: pointer;
+                transition: border-color .15s ease, color .15s ease, background .15s ease;
+            }
+
+            .ref-chip:hover {
+                border-color: var(--ogen-red);
+                color: var(--ogen-red);
+            }
+
+            .ref-chip:focus-visible {
+                outline: 3px solid rgba(214, 18, 28, .35);
+                outline-offset: 2px;
+            }
+
+            .ref-chip.is-active,
+            .ref-chip.is-active:hover {
+                background: var(--ogen-red);
+                border-color: var(--ogen-red);
+                color: #fff;
+            }
+
+            .ref-chip small {
+                margin-left: .3rem;
+                font-size: .85em;
+                font-weight: 400;
+                opacity: .75;
+            }
+
+            .ref-chip--sub {
+                font-size: .85rem;
+                font-weight: 600;
+                padding: .4rem .9rem;
+            }
+
+            .ref-yol {
+                margin: 1.5rem 0 1.25rem;
+                text-align: center;
+                color: #687487;
+                font-size: .95rem;
+            }
+
+            .ref-grid {
+                column-width: 240px;
+                column-gap: 1rem;
+            }
+
+            .ref-item {
+                position: relative;
+                display: block;
+                width: 100%;
+                margin: 0 0 1rem;
+                padding: 0;
+                border: 0;
+                border-radius: 12px;
+                overflow: hidden;
+                background: #f7f8fa;
+                cursor: zoom-in;
+                box-shadow: 0 5px 18px rgba(30, 42, 60, .055);
+                break-inside: avoid;
+                -webkit-column-break-inside: avoid;
+            }
+
+            .ref-item:focus-visible {
+                outline: 3px solid rgba(214, 18, 28, .45);
+                outline-offset: 2px;
+            }
+
+            .ref-item img {
+                display: block;
+                width: 100%;
+                height: auto;
+                transition: transform .3s ease;
+            }
+
+            .ref-item:hover img {
+                transform: scale(1.04);
+            }
+
+            .ref-lb {
+                position: fixed;
+                inset: 0;
+                z-index: 2000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(10, 12, 16, .96);
+            }
+
+            .ref-lb[hidden] {
+                display: none;
+            }
+
+            .ref-lb figure {
+                margin: 0;
+                max-width: 92vw;
+                text-align: center;
+            }
+
+            .ref-lb img {
+                display: block;
+                max-width: 92vw;
+                max-height: 82vh;
+                margin: 0 auto;
+                border-radius: 8px;
+                background: #2b3035;
+            }
+
+            .ref-lb figcaption {
+                margin-top: .75rem;
+                color: #e9ecef;
+                font-size: .95rem;
+            }
+
+            .ref-lb-btn {
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 48px;
+                height: 48px;
+                border: 0;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, .14);
+                color: #fff;
+                font-size: 1.8rem;
+                line-height: 1;
+                cursor: pointer;
+            }
+
+            .ref-lb-btn:hover {
+                background: rgba(255, 255, 255, .28);
+            }
+
+            .ref-lb-btn:focus-visible {
+                outline: 3px solid #fff;
+                outline-offset: 2px;
+            }
+
+            .ref-lb-close { top: 16px; right: 16px; }
+            .ref-lb-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+            .ref-lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
+
+            @media (max-width: 767.98px) {
+                .ref-gallery {
+                    padding-top: 2rem;
+                }
+
+                .ref-chip {
+                    font-size: .85rem;
+                    padding: .45rem .9rem;
+                }
+
+                .ref-chip--sub {
+                    font-size: .8rem;
+                    padding: .35rem .75rem;
+                }
+
+                .ref-lb-prev, .ref-lb-next {
+                    top: auto;
+                    bottom: 16px;
+                    transform: none;
+                }
+            }
+
+            @media (max-width: 575.98px) {
+                .ref-grid {
+                    column-count: 2;
+                    column-width: auto;
+                    column-gap: .6rem;
+                }
+
+                .ref-item {
+                    margin-bottom: .6rem;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .ref-item img, .ref-chip { transition: none; }
+            }
+
+            /* ===== GALERİ: KISMEN KAPALI + AŞAĞI OK ===== */
+            .ref-collapse {
+                position: relative;
+                overflow: hidden;
+                transition: max-height .75s cubic-bezier(.22, .61, .36, 1);
+            }
+
+            .ref-collapse.is-open,
+            .ref-collapse.is-fit {
+                overflow: visible;
+            }
+
+            .ref-fade {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 190px;
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff 88%);
+                pointer-events: none;
+                transition: opacity .4s ease;
+            }
+
+            .ref-collapse.is-open .ref-fade,
+            .ref-collapse.is-fit .ref-fade {
+                opacity: 0;
+            }
+
+            .ref-actions {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: .75rem;
+                margin-top: 1.25rem;
+            }
+
+            .ref-more {
+                display: inline-flex;
+                align-items: center;
+                gap: .55rem;
+                font: inherit;
+                font-size: 1rem;
+                font-weight: 800;
+                padding: .7rem 1.5rem;
+                border: 2px solid var(--ogen-red);
+                border-radius: 999px;
+                background: var(--ogen-red);
+                color: #fff;
+                text-decoration: none;
+                cursor: pointer;
+                transition: background .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease;
+            }
+
+            .ref-more:hover {
+                color: #fff;
+                box-shadow: 0 8px 22px rgba(214, 18, 28, .35);
+                transform: translateY(-2px);
+            }
+
+            .ref-more--ghost {
+                background: #fff;
+                color: var(--ogen-red);
+            }
+
+            .ref-more--ghost:hover {
+                background: var(--ogen-red);
+                color: #fff;
+            }
+
+            .ref-more:focus-visible {
+                outline: 3px solid rgba(214, 18, 28, .35);
+                outline-offset: 3px;
+            }
+
+            .ref-more[hidden] {
+                display: none;
+            }
+
+            .ref-more i {
+                font-size: 1.1rem;
+                line-height: 1;
+            }
+
+            .ref-more:not(.is-open) .ref-arrow {
+                animation: refBounce 1.6s ease-in-out infinite;
+            }
+
+            @keyframes refBounce {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(4px); }
+            }
+
+            /* ===== PROJELER ===== */
+            html {
+                scroll-behavior: smooth;
+            }
+
+            .ref-projeler {
+                padding: 3.5rem 0 5rem;
+                background: #f7f8fa;
+                scroll-margin-top: 10px;
+            }
+
+            .ref-projeler > .container {
+                max-width: 1400px;
+            }
+
+            .ref-projeler .ref-title {
+                letter-spacing: .04em;
+                margin-bottom: .6rem;
+            }
+
+            .ref-bar {
+                width: 72px;
+                height: 4px;
+                border-radius: 4px;
+                background: var(--ogen-red);
+                margin: 0 auto 1rem;
+            }
+
+            .ref-alt {
+                margin: 0 0 2.25rem;
+                color: #687487;
+                font-size: 1rem;
+            }
+
+            .pr-grid {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 1.25rem;
+            }
+
+            .pr-card {
+                position: relative;
+                display: block;
+                width: 100%;
+                min-height: 210px;
+                aspect-ratio: 4 / 3;
+                padding: 0;
+                border: 0;
+                border-radius: 14px;
+                overflow: hidden;
+                background: linear-gradient(135deg, #D6121C 0%, #8e0b12 100%);
+                color: #fff;
+                text-align: left;
+                cursor: pointer;
+                box-shadow: 0 6px 18px rgba(30, 42, 60, .12);
+                transition: transform .3s cubic-bezier(.22, .61, .36, 1), box-shadow .3s ease;
+            }
+
+            .pr-card .pr-cover {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform .6s ease;
+            }
+
+            .pr-card .pr-shade {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(120, 8, 14, .94) 0%, rgba(160, 10, 18, .55) 48%, rgba(214, 18, 28, .12) 100%);
+                transition: opacity .3s ease;
+            }
+
+            .pr-card::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .3) 50%, transparent 65%);
+                transform: translateX(-130%);
+                transition: transform .8s ease;
+                pointer-events: none;
+            }
+
+            .pr-card .pr-icon {
+                position: absolute;
+                top: 14px;
+                left: 16px;
+                font-size: 2rem;
+                line-height: 1;
+                opacity: .35;
+            }
+
+            .pr-card .pr-badge {
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                padding: .2rem .65rem;
+                border-radius: 999px;
+                background: rgba(0, 0, 0, .45);
+                font-size: .8rem;
+                font-weight: 700;
+            }
+
+            .pr-card .pr-body {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                padding: 1rem 1.1rem 1.05rem;
+            }
+
+            .pr-card .pr-il {
+                display: block;
+                margin-bottom: .2rem;
+                font-size: .78rem;
+                font-weight: 800;
+                letter-spacing: .14em;
+                opacity: .9;
+            }
+
+            .pr-card .pr-ad {
+                display: block;
+                font-size: 1.12rem;
+                font-weight: 800;
+                line-height: 1.22;
+                padding-right: 1.8rem;
+            }
+
+            .pr-card .pr-ok {
+                position: absolute;
+                right: 1.05rem;
+                bottom: 1.1rem;
+                font-size: 1.3rem;
+                line-height: 1;
+                transition: transform .3s ease;
+            }
+
+            .pr-card:hover,
+            .pr-card:focus-visible {
+                transform: translateY(-7px);
+                box-shadow: 0 18px 38px rgba(214, 18, 28, .38), 0 0 0 2px rgba(214, 18, 28, .55);
+            }
+
+            .pr-card:hover::after,
+            .pr-card:focus-visible::after {
+                transform: translateX(130%);
+            }
+
+            .pr-card:hover .pr-cover {
+                transform: scale(1.08);
+            }
+
+            .pr-card:hover .pr-ok,
+            .pr-card:focus-visible .pr-ok {
+                transform: translateX(6px);
+            }
+
+            .pr-card:focus-visible {
+                outline: 3px solid #fff;
+                outline-offset: -6px;
+            }
+
+            .pr-card.is-active {
+                transform: translateY(-4px);
+                box-shadow: 0 16px 34px rgba(214, 18, 28, .4), 0 0 0 4px var(--ogen-red);
+            }
+
+            .pr-card.is-active .pr-ok {
+                transform: rotate(90deg);
+            }
+
+            .pr-panel {
+                grid-column: 1 / -1;
+                scroll-margin-top: 16px;
+                padding: 1.4rem 1.4rem .6rem;
+                border: 1px solid #e5e8ed;
+                border-top: 4px solid var(--ogen-red);
+                border-radius: 14px;
+                background: #fff;
+                box-shadow: 0 14px 36px rgba(30, 42, 60, .1);
+                animation: prIn .5s ease both;
+            }
+
+            .pr-panel[hidden] {
+                display: none;
+            }
+
+            .pr-panel-head {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 1rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .pr-panel-head h3 {
+                margin: 0;
+                color: var(--ogen-dark);
+                font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+                font-weight: 800;
+            }
+
+            .pr-panel-head p {
+                margin: .25rem 0 0;
+                color: #687487;
+                font-size: .95rem;
+            }
+
+            .pr-panel-head .ref-chip {
+                flex: 0 0 auto;
+            }
+
+            .pr-bos {
+                margin: 0 0 1.25rem;
+                padding: 2rem 1rem;
+                border: 1px dashed #cfd5de;
+                border-radius: 10px;
+                background: #f7f8fa;
+                color: #687487;
+                text-align: center;
+            }
+
+            .pr-bos[hidden] {
+                display: none;
+            }
+
+            .pr-panel .ref-item {
+                cursor: zoom-in;
+            }
+
+            .pr-panel .ref-cap {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                padding: 1.4rem .75rem .55rem;
+                background: linear-gradient(to top, rgba(10, 12, 16, .78), rgba(10, 12, 16, 0));
+                color: #fff;
+                font-size: .8rem;
+                font-weight: 600;
+                line-height: 1.25;
+                text-align: left;
+                pointer-events: none;
+            }
+
+            @keyframes prIn {
+                from { opacity: 0; transform: translateY(14px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            @media (max-width: 1199.98px) {
+                .pr-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            }
+
+            @media (max-width: 991.98px) {
+                .pr-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            }
+
+            @media (max-width: 575.98px) {
+                .pr-grid { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+                .pr-card { min-height: 190px; }
+                .ref-projeler { padding: 2.5rem 0 3.5rem; }
+                .pr-panel { padding: 1rem 1rem .4rem; }
+                .ref-more { font-size: .95rem; padding: .65rem 1.2rem; }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                html { scroll-behavior: auto; }
+                .ref-collapse, .pr-card, .pr-card::after, .pr-card .pr-cover, .pr-card .pr-ok, .ref-more { transition: none; }
+                .ref-more:not(.is-open) .ref-arrow, .pr-panel { animation: none; }
+            }
+        </style>
+    </head>
+    <body class="d-flex flex-column h-100">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container px-5">
+                    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                            <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                                    <li><a class="dropdown-item" href="blog-home.html">Blog Home</a></li>
+                                    <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Portfolio</a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                                    <li><a class="dropdown-item" href="portfolio-overview.html">Portfolio Overview</a></li>
+                                    <li><a class="dropdown-item" href="portfolio-item.html">Portfolio Item</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Page Content-->
+            <section class="ref-section">
+                <div class="container px-4 px-lg-5">
+                    <div class="ref-intro">
+                        <span class="ref-eyebrow">OGEN YAPI TEKNİK</span>
+                        <h1 class="ref-title">Referanslarımız</h1>
+                    </div>
+                    <div class="ref-line"></div>
+                </div>
+            </section>
+
+            <section class="ref-gallery" id="refGaleri">
+                <div class="container px-4 px-lg-5">
+                    <div class="ref-rows" id="refKat" role="group" aria-label="Kategoriler"></div>
+                    <div class="ref-rows" id="refAlt" role="group" aria-label="Alt kategoriler" hidden></div>
+                    <p class="ref-yol" id="refYol" aria-live="polite"></p>
+                    <div class="ref-collapse" id="refCollapse">
+                        <div class="ref-grid" id="refGrid"></div>
+                        <div class="ref-fade" id="refFade" aria-hidden="true"></div>
+                    </div>
+                    <div class="ref-actions">
+                        <button type="button" class="ref-more" id="refMore" aria-expanded="false" aria-controls="refCollapse">
+                            <span id="refMoreTxt">Tüm fotoğrafları gör</span>
+                            <i class="bi bi-chevron-down ref-arrow" id="refMoreIcon" aria-hidden="true"></i>
+                        </button>
+                        <a class="ref-more ref-more--ghost" href="#projeler">Projelere git <i class="bi bi-arrow-down" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ref-projeler" id="projeler">
+                <div class="container px-4 px-lg-5">
+                    <div class="ref-intro">
+                        <h2 class="ref-title">PROJELER</h2>
+                        <div class="ref-bar"></div>
+                        <p class="ref-alt">Bir projeyi seçin, o projeye ait fotoğrafları görün.</p>
+                    </div>
+                    <div class="pr-grid" id="prGrid">
+                        <div class="pr-panel" id="prPanel" role="region" aria-labelledby="prPanelAd" hidden>
+                            <div class="pr-panel-head">
+                                <div>
+                                    <h3 id="prPanelAd"></h3>
+                                    <p id="prPanelAlt"></p>
+                                </div>
+                                <button type="button" class="ref-chip" id="prPanelKapat">Kapat &times;</button>
+                            </div>
+                            <p class="pr-bos" id="prBos" hidden>Bu projenin fotoğrafları yakında eklenecek.</p>
+                            <div class="ref-grid" id="prFoto"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer-->
+        <footer class="bg-dark py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Your Website 2023</div></div>
+                    <div class="col-auto">
+                        <a class="link-light small" href="#!">Privacy</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Terms</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <div class="ref-lb" id="refLb" role="dialog" aria-modal="true" aria-label="Fotoğraf görüntüleyici" hidden>
+            <button type="button" class="ref-lb-btn ref-lb-close" id="refLbClose" aria-label="Kapat">&times;</button>
+            <button type="button" class="ref-lb-btn ref-lb-prev" id="refLbPrev" aria-label="Önceki fotoğraf">&lsaquo;</button>
+            <figure>
+                <img id="refLbImg" src="" alt="" />
+                <figcaption id="refLbCap"></figcaption>
+            </figure>
+            <button type="button" class="ref-lb-btn ref-lb-next" id="refLbNext" aria-label="Sonraki fotoğraf">&rsaquo;</button>
+        </div>
+
+        <script>
+            (function () {
+                /* ===== PROJELER =====
+                   Her proje için fotoğraf atamak üzere "foto" listesine numara yazın.
+                   Numara, assets/slider/slider-XX.jpg dosyasının XX kısmıdır. Örnek: foto: [9, 10, 12]
+                   "kapak": kart üzerinde görünecek fotoğrafın numarası. Boş (null) bırakılırsa
+                   projenin ilk fotoğrafı kullanılır; hiç fotoğraf yoksa kart kırmızı görünür.
+                   Aynı fotoğraf birden fazla projede kullanılabilir. */
+                var PROJELER = [
+                    { ad: 'Ekolojik Enerji Biyokütle Enerji Santrali', il: 'Tekirdağ',  kapak: null, foto: [] },
+                    { ad: 'Halkalı-Kapıkule Demiryolu Hattı',          il: 'Kırklareli', kapak: null, foto: [] },
+                    { ad: 'Meram Biyogaz Enerji Santrali',             il: 'Konya',      kapak: null, foto: [] },
+                    { ad: 'İstanbul Havalimanı',                       il: 'İstanbul',   kapak: null, foto: [] },
+                    { ad: 'THY Destek Binaları - B Zone',              il: 'İstanbul',   kapak: null, foto: [] },
+                    { ad: 'THY Destek Binaları - C Zone',              il: 'İstanbul',   kapak: null, foto: [] },
+                    { ad: 'THY Destek Binaları - D Zone',              il: 'İstanbul',   kapak: null, foto: [] },
+                    { ad: 'KMO Odayeri Bağlantı Yolları',              il: 'İstanbul',   kapak: null, foto: [] }
+                ];
+
+                /* ===== FOTOĞRAF LİSTESİ =====
+                   Fotoğraf eklemek/çıkarmak için ilgili "foto" listesindeki numarayı değiştirin.
+                   Numara, assets/slider/slider-XX.jpg dosyasının XX kısmıdır. */
+                var KATEGORILER = [
+                    { ad: 'Kaba İnşaat İşleri', kisa: 'Kaba İnşaat', alt: [
+                        { ad: 'Betonarme Yapı İmalatları', kisa: 'Betonarme', foto: [9, 10, 12, 18, 20, 22, 23, 24, 25, 26, 29, 31, 32, 34, 42, 44, 52, 61, 63, 69, 76] },
+                        { ad: 'Duvar Örme-Sıva-Boya İşleri', kisa: 'Duvar Örme, Sıva, Boya', foto: [13, 49, 68] },
+                        { ad: 'Yapısal Beton Tamiratı İşleri', kisa: 'Beton Tamiratı', foto: [28, 33, 50, 51, 64, 70] }
+                    ] },
+                    { ad: 'İnce İnşaat (Bitirme) İşleri', kisa: 'İnce İnşaat', alt: [
+                        { ad: 'Alüminyum Kompozit ve Cam Giydirme Cephe Sistemleri', kisa: 'Giydirme Cephe', foto: [4, 5, 6, 17, 39, 74] },
+                        { ad: 'Cam Bölme Sistemleri', kisa: 'Cam Bölme', foto: [56] },
+                        { ad: 'Seramik ve Fayans Kaplama İşleri', kisa: 'Seramik ve Fayans', foto: [53] },
+                        { ad: 'Sıva-Boya İşleri', kisa: 'Sıva ve Boya', foto: [15, 40] }
+                    ] },
+                    { ad: 'Çelik ve Metal İşleri, Çatı ve Cephe Kaplama', kisa: 'Çelik Yapılar, Cephe Kaplama', alt: [
+                        { ad: 'Yapısal Çelik İmalat ve Montajı', kisa: 'Çelik İmalat ve Montaj', foto: [27, 78] },
+                        { ad: 'Çatı ve Cephe Kaplama', kisa: 'Çatı ve Cephe Kaplama', foto: [7, 38, 46, 48, 54, 60, 65, 67, 71] },
+                        { ad: 'Metal Kapı, Merdiven, Korkuluk ve Platform İşleri', kisa: 'Kapı, Merdiven, Korkuluk', foto: [1, 2, 14, 19, 55, 59] }
+                    ] },
+                    { ad: 'Saha ve Çevre Düzenleme İşleri', kisa: 'Saha ve Çevre', alt: [
+                        { ad: 'Saha Betonları', kisa: 'Saha Betonları', foto: [62, 72] },
+                        { ad: 'Tel Örgü ve Panel Çit Yapımı', kisa: 'Tel Örgü ve Çit', foto: [30, 37, 47, 66, 77] }
+                    ] },
+                    { ad: 'İzolasyon ve Yüzey Kaplama İşleri', kisa: 'İzolasyon ve Kaplama', alt: [
+                        { ad: 'Bitümlü Membran Su Yalıtımı', kisa: 'Su Yalıtımı', foto: [8, 11, 35, 41] },
+                        { ad: 'Epoksi Esaslı Yüzey Kaplama', kisa: 'Epoksi Kaplama', foto: [58] },
+                        { ad: 'Polyurea Esaslı Yüzey Kaplama', kisa: 'Polyurea Kaplama', foto: [3, 16] }
+                    ] }
+                ];
+
+                /* Fotoğraf boyutları (genişlik, yükseklik). Yeni fotoğraf eklenirse buraya da eklenebilir, eklenmese de çalışır. */
+                var BOYUT = {
+                    1: [1195, 896], 2: [853, 543], 3: [720, 960], 4: [1092, 651], 5: [742, 704], 6: [1264, 564],
+                    7: [1600, 666], 8: [889, 991], 9: [1052, 574], 10: [1080, 517], 11: [1284, 723], 12: [1080, 458],
+                    13: [1343, 755], 14: [1111, 852], 15: [1221, 753], 16: [960, 720], 17: [811, 560], 18: [1236, 688],
+                    19: [985, 666], 20: [698, 524], 21: [768, 1024], 22: [957, 718], 23: [1288, 725], 24: [1080, 517],
+                    25: [1004, 650], 26: [785, 449], 27: [1290, 655], 28: [720, 960], 29: [583, 742], 30: [878, 601],
+                    31: [982, 553], 32: [903, 590], 33: [635, 847], 34: [764, 697], 35: [768, 1024], 36: [825, 464],
+                    37: [1124, 632], 38: [992, 662], 39: [1113, 835], 40: [509, 1131], 41: [468, 831], 42: [1046, 818],
+                    43: [858, 811], 44: [720, 960], 45: [516, 918], 46: [1093, 816], 47: [1128, 607], 48: [997, 568],
+                    49: [960, 720], 50: [679, 905], 51: [942, 706], 52: [728, 545], 53: [871, 1161], 54: [1062, 793],
+                    55: [860, 1147], 56: [917, 688], 57: [694, 520], 58: [1200, 896], 59: [639, 856], 60: [1341, 800],
+                    61: [879, 495], 62: [1056, 791], 63: [718, 718], 64: [747, 557], 65: [1600, 1200], 66: [1027, 767],
+                    67: [1105, 829], 68: [906, 677], 69: [973, 727], 70: [1106, 722], 71: [1001, 673], 72: [1108, 831],
+                    73: [1041, 1180], 74: [825, 771], 75: [582, 1037], 76: [808, 604], 77: [1059, 684], 78: [1229, 811]
+                };
+
+                var elKat = document.getElementById('refKat');
+                var elAlt = document.getElementById('refAlt');
+                var elYol = document.getElementById('refYol');
+                var elGrid = document.getElementById('refGrid');
+                var elCollapse = document.getElementById('refCollapse');
+                var elMore = document.getElementById('refMore');
+                var elMoreTxt = document.getElementById('refMoreTxt');
+                var elMoreIcon = document.getElementById('refMoreIcon');
+                var prGrid = document.getElementById('prGrid');
+                var prPanel = document.getElementById('prPanel');
+                var prFoto = document.getElementById('prFoto');
+                var prBos = document.getElementById('prBos');
+                var lb = document.getElementById('refLb');
+                var lbImg = document.getElementById('refLbImg');
+                var lbCap = document.getElementById('refLbCap');
+                var secKat = -1, secAlt = -1, liste = [], projeListe = [], aktifListe = [];
+                var lbIndex = 0, sonOdak = null;
+                var galeriAcik = false, animasyonda = false, acikProje = -1, kartlar = [];
+                var azHareket = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                function yol(n) { return 'assets/slider/slider-' + (n < 10 ? '0' : '') + n + '.jpg'; }
+                function topla(a) { return a.foto.length; }
+                function katSayi(k) { return k.alt.reduce(function (t, a) { return t + topla(a); }, 0); }
+                var toplam = KATEGORILER.reduce(function (t, k) { return t + katSayi(k); }, 0);
+
+                /* Fotoğraf numarası -> hizmet adı */
+                var FOTO_ETIKET = {};
+                KATEGORILER.forEach(function (k) {
+                    k.alt.forEach(function (a) {
+                        a.foto.forEach(function (n) { FOTO_ETIKET[n] = a.ad; });
+                    });
+                });
+
+                function chip(metin, sayi, aktif, alt, tikla) {
+                    var b = document.createElement('button');
+                    b.type = 'button';
+                    b.className = 'ref-chip' + (alt ? ' ref-chip--sub' : '') + (aktif ? ' is-active' : '');
+                    b.setAttribute('aria-pressed', aktif ? 'true' : 'false');
+                    b.appendChild(document.createTextNode(metin));
+                    var s = document.createElement('small');
+                    s.textContent = '(' + sayi + ')';
+                    b.appendChild(s);
+                    b.addEventListener('click', tikla);
+                    return b;
+                }
+
+                function sec(k, a) { secKat = k; secAlt = a; ciz(); }
+
+                function kapaliYukseklik() { return window.innerWidth < 576 ? 440 : 560; }
+
+                /* ===== GALERİ: AÇ / KAPAT ===== */
+                function guncelleDugme() {
+                    elMore.classList.toggle('is-open', galeriAcik);
+                    elMore.setAttribute('aria-expanded', galeriAcik ? 'true' : 'false');
+                    elMoreTxt.textContent = galeriAcik ? 'Galeriyi daralt' : 'Tüm fotoğrafları gör (' + liste.length + ')';
+                    elMoreIcon.className = 'bi ' + (galeriAcik ? 'bi-chevron-up' : 'bi-chevron-down') + ' ref-arrow';
+                }
+
+                function uygula() {
+                    if (animasyonda) return;
+                    var kapali = kapaliYukseklik();
+                    var tam = elGrid.offsetHeight;
+                    if (tam <= kapali + 90) {
+                        elCollapse.classList.add('is-fit');
+                        elCollapse.style.maxHeight = 'none';
+                        elMore.hidden = true;
+                    } else {
+                        elCollapse.classList.remove('is-fit');
+                        elMore.hidden = false;
+                        elCollapse.classList.toggle('is-open', galeriAcik);
+                        elCollapse.style.maxHeight = galeriAcik ? 'none' : kapali + 'px';
+                    }
+                    guncelleDugme();
+                }
+
+                function galeriDegistir() {
+                    var kapali = kapaliYukseklik();
+                    var tam = elGrid.offsetHeight;
+                    if (azHareket) {
+                        galeriAcik = !galeriAcik;
+                        uygula();
+                        if (!galeriAcik) document.getElementById('refGaleri').scrollIntoView();
+                        return;
+                    }
+                    animasyonda = true;
+                    if (!galeriAcik) {
+                        galeriAcik = true;
+                        elCollapse.style.maxHeight = tam + 'px';
+                        var bitti = function () {
+                            elCollapse.removeEventListener('transitionend', bitti);
+                            clearTimeout(yedek);
+                            animasyonda = false;
+                            elCollapse.classList.add('is-open');
+                            elCollapse.style.maxHeight = 'none';
+                        };
+                        var yedek = setTimeout(bitti, 900);
+                        elCollapse.addEventListener('transitionend', bitti);
+                    } else {
+                        galeriAcik = false;
+                        elCollapse.classList.remove('is-open');
+                        elCollapse.style.maxHeight = tam + 'px';
+                        void elCollapse.offsetHeight;
+                        elCollapse.style.maxHeight = kapali + 'px';
+                        document.getElementById('refGaleri').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        setTimeout(function () { animasyonda = false; uygula(); }, 800);
+                    }
+                    guncelleDugme();
+                }
+
+                elMore.addEventListener('click', galeriDegistir);
+
+                function ciz() {
+                    elKat.innerHTML = '';
+                    elKat.appendChild(chip('Tümü', toplam, secKat < 0, false, function () { sec(-1, -1); }));
+                    KATEGORILER.forEach(function (k, i) {
+                        elKat.appendChild(chip(k.kisa, katSayi(k), secKat === i, false, function () { sec(i, -1); }));
+                    });
+
+                    elAlt.innerHTML = '';
+                    elAlt.hidden = secKat < 0;
+                    if (secKat >= 0) {
+                        var kat = KATEGORILER[secKat];
+                        elAlt.appendChild(chip('Tümü', katSayi(kat), secAlt < 0, true, function () { sec(secKat, -1); }));
+                        kat.alt.forEach(function (a, j) {
+                            elAlt.appendChild(chip(a.kisa, topla(a), secAlt === j, true, function () { sec(secKat, j); }));
+                        });
+                    }
+
+                    liste = [];
+                    KATEGORILER.forEach(function (k, i) {
+                        if (secKat >= 0 && secKat !== i) return;
+                        k.alt.forEach(function (a, j) {
+                            if (secAlt >= 0 && secAlt !== j) return;
+                            a.foto.forEach(function (n) { liste.push({ n: n, etiket: a.ad }); });
+                        });
+                    });
+
+                    var yazi = 'Tüm referanslar';
+                    if (secKat >= 0) {
+                        yazi = KATEGORILER[secKat].ad;
+                        if (secAlt >= 0) yazi += ' › ' + KATEGORILER[secKat].alt[secAlt].ad;
+                    }
+                    elYol.textContent = yazi + ' · ' + liste.length + ' fotoğraf';
+
+                    elGrid.innerHTML = '';
+                    liste.forEach(function (f, i) {
+                        elGrid.appendChild(fotoDugme(f, i, false));
+                    });
+                    uygula();
+                }
+
+                function fotoDugme(f, i, baslikli) {
+                    var b = document.createElement('button');
+                    b.type = 'button';
+                    b.className = 'ref-item';
+                    b.setAttribute('data-i', i);
+                    b.setAttribute('aria-label', 'Fotoğrafı büyüt: ' + f.etiket);
+                    var im = document.createElement('img');
+                    im.src = yol(f.n);
+                    im.alt = f.etiket;
+                    if (BOYUT[f.n]) {
+                        im.width = BOYUT[f.n][0];
+                        im.height = BOYUT[f.n][1];
+                    }
+                    im.loading = 'lazy';
+                    im.decoding = 'async';
+                    b.appendChild(im);
+                    if (baslikli) {
+                        var c = document.createElement('span');
+                        c.className = 'ref-cap';
+                        c.textContent = f.etiket;
+                        b.appendChild(c);
+                    }
+                    return b;
+                }
+
+                elGrid.addEventListener('click', function (e) {
+                    var b = e.target.closest('.ref-item');
+                    if (!b) return;
+                    sonOdak = b;
+                    ac(parseInt(b.getAttribute('data-i'), 10), liste);
+                });
+
+                /* ===== PROJE KARTLARI ===== */
+                function kartYap(p, i) {
+                    var kapak = p.kapak || (p.foto.length ? p.foto[0] : null);
+                    var b = document.createElement('button');
+                    b.type = 'button';
+                    b.className = 'pr-card';
+                    b.setAttribute('aria-expanded', 'false');
+                    b.setAttribute('aria-controls', 'prPanel');
+                    b.setAttribute('aria-label', p.ad + ', ' + p.il + ' projesinin fotoğraflarını göster');
+
+                    if (kapak) {
+                        var im = document.createElement('img');
+                        im.className = 'pr-cover';
+                        im.src = yol(kapak);
+                        im.alt = '';
+                        im.loading = 'lazy';
+                        im.decoding = 'async';
+                        b.appendChild(im);
+                    } else {
+                        var ik = document.createElement('i');
+                        ik.className = 'bi bi-building pr-icon';
+                        ik.setAttribute('aria-hidden', 'true');
+                        b.appendChild(ik);
+                    }
+
+                    var gol = document.createElement('span');
+                    gol.className = 'pr-shade';
+                    b.appendChild(gol);
+
+                    if (p.foto.length) {
+                        var rozet = document.createElement('span');
+                        rozet.className = 'pr-badge';
+                        rozet.textContent = p.foto.length + ' fotoğraf';
+                        b.appendChild(rozet);
+                    }
+
+                    var govde = document.createElement('span');
+                    govde.className = 'pr-body';
+                    var il = document.createElement('span');
+                    il.className = 'pr-il';
+                    il.textContent = p.il.toLocaleUpperCase('tr-TR');
+                    var ad = document.createElement('strong');
+                    ad.className = 'pr-ad';
+                    ad.textContent = p.ad;
+                    govde.appendChild(il);
+                    govde.appendChild(ad);
+                    b.appendChild(govde);
+
+                    var ok = document.createElement('i');
+                    ok.className = 'bi bi-arrow-right pr-ok';
+                    ok.setAttribute('aria-hidden', 'true');
+                    b.appendChild(ok);
+
+                    b.addEventListener('click', function () { projeSec(i); });
+                    return b;
+                }
+
+                PROJELER.forEach(function (p, i) {
+                    var k = kartYap(p, i);
+                    kartlar.push(k);
+                    prGrid.insertBefore(k, prPanel);
+                });
+
+                /* Paneli, seçilen kartın bulunduğu satırın hemen altına yerleştirir. */
+                function panelYerlestir() {
+                    if (acikProje < 0) return;
+                    var kolon = getComputedStyle(prGrid).gridTemplateColumns.split(' ').length || 1;
+                    var satirSonu = Math.min(Math.floor(acikProje / kolon) * kolon + kolon - 1, kartlar.length - 1);
+                    prGrid.insertBefore(prPanel, kartlar[satirSonu].nextSibling);
+                }
+
+                function panelCiz() {
+                    if (acikProje < 0) { prPanel.hidden = true; return; }
+                    var p = PROJELER[acikProje];
+                    document.getElementById('prPanelAd').textContent = p.ad;
+                    document.getElementById('prPanelAlt').textContent = p.il + (p.foto.length ? ' · ' + p.foto.length + ' fotoğraf' : '');
+
+                    projeListe = p.foto.map(function (n) {
+                        return { n: n, etiket: FOTO_ETIKET[n] || 'Proje fotoğrafı', proje: p.ad };
+                    });
+                    prFoto.innerHTML = '';
+                    projeListe.forEach(function (f, i) { prFoto.appendChild(fotoDugme(f, i, true)); });
+                    prBos.hidden = projeListe.length > 0;
+                    prFoto.hidden = projeListe.length === 0;
+
+                    panelYerlestir();
+                    prPanel.hidden = false;
+                    prPanel.style.animation = 'none';
+                    void prPanel.offsetHeight;
+                    prPanel.style.animation = '';
+                }
+
+                function projeSec(i) {
+                    acikProje = (acikProje === i) ? -1 : i;
+                    kartlar.forEach(function (k, j) {
+                        var a = j === acikProje;
+                        k.classList.toggle('is-active', a);
+                        k.setAttribute('aria-expanded', a ? 'true' : 'false');
+                    });
+                    panelCiz();
+                    if (acikProje >= 0) {
+                        requestAnimationFrame(function () {
+                            prPanel.scrollIntoView({ behavior: azHareket ? 'auto' : 'smooth', block: 'start' });
+                        });
+                    }
+                }
+
+                document.getElementById('prPanelKapat').addEventListener('click', function () {
+                    var i = acikProje;
+                    projeSec(i);
+                    if (i >= 0) kartlar[i].focus({ preventScroll: true });
+                });
+
+                prFoto.addEventListener('click', function (e) {
+                    var b = e.target.closest('.ref-item');
+                    if (!b) return;
+                    sonOdak = b;
+                    ac(parseInt(b.getAttribute('data-i'), 10), projeListe);
+                });
+
+                /* ===== BÜYÜTME PENCERESİ ===== */
+                function goster(i) {
+                    lbIndex = (i + aktifListe.length) % aktifListe.length;
+                    var f = aktifListe[lbIndex];
+                    lbImg.src = yol(f.n);
+                    lbImg.alt = f.etiket;
+                    lbCap.textContent = (f.proje ? f.proje + ' · ' : '') + f.etiket + ' · ' + (lbIndex + 1) + ' / ' + aktifListe.length;
+                    var sonraki = new Image();
+                    sonraki.src = yol(aktifListe[(lbIndex + 1) % aktifListe.length].n);
+                }
+
+                function ac(i, kaynak) {
+                    aktifListe = kaynak;
+                    goster(i);
+                    lb.hidden = false;
+                    document.body.style.overflow = 'hidden';
+                    document.getElementById('refLbClose').focus();
+                }
+
+                function kapat() {
+                    lb.hidden = true;
+                    document.body.style.overflow = '';
+                    lbImg.src = '';
+                    if (sonOdak) sonOdak.focus();
+                }
+
+                document.getElementById('refLbClose').addEventListener('click', kapat);
+                document.getElementById('refLbPrev').addEventListener('click', function () { goster(lbIndex - 1); });
+                document.getElementById('refLbNext').addEventListener('click', function () { goster(lbIndex + 1); });
+                lb.addEventListener('click', function (e) { if (e.target === lb) kapat(); });
+                document.addEventListener('keydown', function (e) {
+                    if (lb.hidden) return;
+                    if (e.key === 'Escape') kapat();
+                    else if (e.key === 'ArrowLeft') goster(lbIndex - 1);
+                    else if (e.key === 'ArrowRight') goster(lbIndex + 1);
+                });
+
+                var x0 = null;
+                lb.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+                lb.addEventListener('touchend', function (e) {
+                    if (x0 === null) return;
+                    var dx = e.changedTouches[0].clientX - x0;
+                    x0 = null;
+                    if (Math.abs(dx) > 50) goster(lbIndex + (dx < 0 ? 1 : -1));
+                }, { passive: true });
+
+                /* Ekran boyutu değişince / görseller yüklenince yeniden hesapla */
+                var yenidenZamanlayici = null;
+                function yenidenHesapla() {
+                    clearTimeout(yenidenZamanlayici);
+                    yenidenZamanlayici = setTimeout(function () {
+                        uygula();
+                        panelYerlestir();
+                    }, 120);
+                }
+                window.addEventListener('resize', yenidenHesapla);
+                window.addEventListener('load', yenidenHesapla);
+                if ('ResizeObserver' in window) {
+                    new ResizeObserver(yenidenHesapla).observe(elGrid);
+                }
+
+                ciz();
+            })();
+        </script>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
